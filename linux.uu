@@ -1,0 +1,6 @@
+uuu_version 1.2.39
+
+SDP: boot -f u-boot/u-boot-dtb.imx -nojump
+SDP: write -f linux/arch/arm/boot/zImage -addr 0x80800000
+SDP: write -f linux/arch/arm/boot/dts/nxp/imx/imx6sx-lm.dtb -addr 0x83000000
+SDP: jump -f u-boot/u-boot-dtb.imx -ivt

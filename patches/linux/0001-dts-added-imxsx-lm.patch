@@ -1,0 +1,178 @@
+From 5a6bd205c18af384b86ba05c242a242101827994 Mon Sep 17 00:00:00 2001
+From: Daniel Trnka <daniel.trnka@gmail.com>
+Date: Thu, 28 Dec 2023 16:25:33 +0100
+Subject: [PATCH] dts: added imxsx-lm
+
+---
+ arch/arm/boot/dts/nxp/imx/Makefile      |   3 +-
+ arch/arm/boot/dts/nxp/imx/imx6sx-lm.dts | 144 ++++++++++++++++++++++++
+ 2 files changed, 146 insertions(+), 1 deletion(-)
+ create mode 100644 arch/arm/boot/dts/nxp/imx/imx6sx-lm.dts
+
+diff --git a/arch/arm/boot/dts/nxp/imx/Makefile b/arch/arm/boot/dts/nxp/imx/Makefile
+index a724d1a7a9a0..0386d6d6f923 100644
+--- a/arch/arm/boot/dts/nxp/imx/Makefile
++++ b/arch/arm/boot/dts/nxp/imx/Makefile
+@@ -293,7 +293,8 @@ dtb-$(CONFIG_SOC_IMX6SX) += \
+ 	imx6sx-softing-vining-2000.dtb \
+ 	imx6sx-udoo-neo-basic.dtb \
+ 	imx6sx-udoo-neo-extended.dtb \
+-	imx6sx-udoo-neo-full.dtb
++	imx6sx-udoo-neo-full.dtb \
++	imx6sx-lm.dtb
+ dtb-$(CONFIG_SOC_IMX6UL) += \
+ 	imx6ul-14x14-evk.dtb \
+ 	imx6ul-ccimx6ulsbcexpress.dtb \
+diff --git a/arch/arm/boot/dts/nxp/imx/imx6sx-lm.dts b/arch/arm/boot/dts/nxp/imx/imx6sx-lm.dts
+new file mode 100644
+index 000000000000..a6fb8fc56d96
+--- /dev/null
++++ b/arch/arm/boot/dts/nxp/imx/imx6sx-lm.dts
+@@ -0,0 +1,144 @@
++/dts-v1/;
++
++#include <dt-bindings/gpio/gpio.h>
++#include <dt-bindings/input/input.h>
++#include <dt-bindings/leds/common.h>
++#include "imx6sx.dtsi"
++
++&uart6 {
++    status = "okay";
++};
++
++&usdhc4 {
++    status = "okay";
++    pinctrl-names = "default", "state_100mhz", "state_200mhz";
++    pinctrl-0 = <&pinctrl_usdhc4_1>;
++    pinctrl-1 = <&pinctrl_usdhc4_1_100mhz>;
++    pinctrl-2 = <&pinctrl_usdhc4_1_200mhz>;
++    bus-width = <0x08>;
++    no-1-8-v;
++    non-removable;
++    keep-power-in-suspend;
++};
++
++&usbotg1 {
++    status = "okay";
++};
++
++&usbotg2 {
++    dr_mode = "host";
++    status = "okay";
++};
++
++&iomuxc {
++    pinctrl_usdhc4_1: usdhc4grp-1 {
++        fsl,pins = <
++            MX6SX_PAD_SD4_CMD__USDHC4_CMD		0x17059
++            MX6SX_PAD_SD4_CLK__USDHC4_CLK		0x10059
++            MX6SX_PAD_SD4_DATA0__USDHC4_DATA0	0x17059
++            MX6SX_PAD_SD4_DATA1__USDHC4_DATA1	0x17059
++            MX6SX_PAD_SD4_DATA2__USDHC4_DATA2	0x17059
++            MX6SX_PAD_SD4_DATA3__USDHC4_DATA3	0x17059
++            MX6SX_PAD_SD4_DATA4__USDHC4_DATA4	0x17059
++            MX6SX_PAD_SD4_DATA5__USDHC4_DATA5	0x17059
++            MX6SX_PAD_SD4_DATA6__USDHC4_DATA6	0x17059
++            MX6SX_PAD_SD4_DATA7__USDHC4_DATA7	0x17059
++        >;
++    };
++
++    pinctrl_usdhc4_1_100mhz: usdhc4grp-1-100mhz {
++        fsl,pins = <
++            MX6SX_PAD_SD4_CMD__USDHC4_CMD		0x170b9
++            MX6SX_PAD_SD4_CLK__USDHC4_CLK		0x100b9
++            MX6SX_PAD_SD4_DATA0__USDHC4_DATA0	0x170b9
++            MX6SX_PAD_SD4_DATA1__USDHC4_DATA1	0x170b9
++            MX6SX_PAD_SD4_DATA2__USDHC4_DATA2	0x170b9
++            MX6SX_PAD_SD4_DATA3__USDHC4_DATA3	0x170b9
++            MX6SX_PAD_SD4_DATA4__USDHC4_DATA4	0x170b9
++            MX6SX_PAD_SD4_DATA5__USDHC4_DATA5	0x170b9
++            MX6SX_PAD_SD4_DATA6__USDHC4_DATA6	0x170b9
++            MX6SX_PAD_SD4_DATA7__USDHC4_DATA7	0x170b9
++        >;
++    };
++
++    pinctrl_usdhc4_1_200mhz: usdhc4grp-1-200mhz {
++        fsl,pins = <
++            MX6SX_PAD_SD4_CMD__USDHC4_CMD		0x170f9
++            MX6SX_PAD_SD4_CLK__USDHC4_CLK		0x100f9
++            MX6SX_PAD_SD4_DATA0__USDHC4_DATA0	0x170f9
++            MX6SX_PAD_SD4_DATA1__USDHC4_DATA1	0x170f9
++            MX6SX_PAD_SD4_DATA2__USDHC4_DATA2	0x170f9
++            MX6SX_PAD_SD4_DATA3__USDHC4_DATA3	0x170f9
++            MX6SX_PAD_SD4_DATA4__USDHC4_DATA4	0x170f9
++            MX6SX_PAD_SD4_DATA5__USDHC4_DATA5	0x170f9
++            MX6SX_PAD_SD4_DATA6__USDHC4_DATA6	0x170f9
++            MX6SX_PAD_SD4_DATA7__USDHC4_DATA7	0x170f9
++        >;
++    };
++
++    pinctrl_gpio_keys: gpio_keysgrp {
++        fsl,pins = <
++            MX6SX_PAD_KEY_COL0__KPP_COL_0 0x1b010
++            MX6SX_PAD_KEY_COL1__KPP_COL_1 0x1b010
++            MX6SX_PAD_KEY_COL4__KPP_COL_4 0x1b010
++            MX6SX_PAD_KEY_ROW0__KPP_ROW_0 0x1b010
++            MX6SX_PAD_KEY_ROW1__KPP_ROW_1 0x1b010
++            MX6SX_PAD_KEY_ROW4__KPP_ROW_4 0x1b010
++        >;
++    };
++
++    pinctrl_flexcan1: flexcan1grp {
++        fsl,pins = <
++            MX6SX_PAD_KEY_COL2__CAN1_TX 0x1b020
++            MX6SX_PAD_KEY_ROW2__CAN1_RX	0x1b020
++        >;
++    };
++};
++
++&kpp {
++    status = "okay";
++    pinctrl-names = "default";
++    pinctrl-0 = <&pinctrl_gpio_keys>;
++    linux,keymap = <
++        MATRIX_KEY(0, 1, KEY_UP)
++
++        MATRIX_KEY(1, 0, KEY_LEFT)
++        MATRIX_KEY(1, 1, KEY_ENTER)
++        MATRIX_KEY(1, 4, KEY_RIGHT)
++
++        MATRIX_KEY(4, 1, KEY_DOWN)
++    >;
++};
++
++&flexcan1 {
++    pinctrl-names = "default";
++    pinctrl-0 = <&pinctrl_flexcan1>;
++    status = "okay";
++};
++
++/ {
++    model = "imx6sx-lm";
++    compatible = "fsl,imx6sx";
++
++    leds {
++        compatible = "gpio-leds";
++        led1 {
++            gpios = <&gpio5 16 GPIO_ACTIVE_HIGH>;
++            linux,default-trigger = "mmc3";
++            function = LED_FUNCTION_DISK_READ;
++        };
++
++        led2 {
++            gpios = <&gpio5 17 GPIO_ACTIVE_HIGH>;
++            linux,default-trigger = "mmc3";
++            function = LED_FUNCTION_DISK_WRITE;
++        };
++
++        led3 {
++            gpios = <&gpio5 22 GPIO_ACTIVE_HIGH>;
++            linux,default-trigger = "heartbeat";
++            function = LED_FUNCTION_HEARTBEAT;
++        };
++
++    };
++};
+-- 
+2.43.0
+
