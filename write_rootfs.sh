@@ -14,4 +14,10 @@ mkdir -p "$TARGET_DIR"
 sudo umount "$TARGET_DIR" || true
 sudo mount "$DEV" "$TARGET_DIR"
 sudo rsync -av --delete "$BUILD_DIR/rootfs/" "$TARGET_DIR/"
+
+# setup SSH keys
+sudo mkdir -p "$TARGET_DIR/root/.ssh/"
+sudo cp ~/.ssh/id_rsa.pub "$TARGET_DIR/root/.ssh/authorized_keys"
+sudo chown -R root "$TARGET_DIR/root/.ssh/"
+
 sudo umount "$TARGET_DIR" || true
