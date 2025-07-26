@@ -1,19 +1,19 @@
-From 5a6bd205c18af384b86ba05c242a242101827994 Mon Sep 17 00:00:00 2001
+From 91a57bc99dbeb813740487aacf2bc9af4f85994e Mon Sep 17 00:00:00 2001
 From: Daniel Trnka <daniel.trnka@gmail.com>
 Date: Thu, 28 Dec 2023 16:25:33 +0100
 Subject: [PATCH] dts: added imxsx-lm
 
 ---
  arch/arm/boot/dts/nxp/imx/Makefile      |   3 +-
- arch/arm/boot/dts/nxp/imx/imx6sx-lm.dts | 144 ++++++++++++++++++++++++
- 2 files changed, 146 insertions(+), 1 deletion(-)
+ arch/arm/boot/dts/nxp/imx/imx6sx-lm.dts | 158 ++++++++++++++++++++++++
+ 2 files changed, 160 insertions(+), 1 deletion(-)
  create mode 100644 arch/arm/boot/dts/nxp/imx/imx6sx-lm.dts
 
 diff --git a/arch/arm/boot/dts/nxp/imx/Makefile b/arch/arm/boot/dts/nxp/imx/Makefile
-index a724d1a7a9a0..0386d6d6f923 100644
+index 8b3abe817e12..6bc9b8dde7f4 100644
 --- a/arch/arm/boot/dts/nxp/imx/Makefile
 +++ b/arch/arm/boot/dts/nxp/imx/Makefile
-@@ -293,7 +293,8 @@ dtb-$(CONFIG_SOC_IMX6SX) += \
+@@ -314,7 +314,8 @@ dtb-$(CONFIG_SOC_IMX6SX) += \
  	imx6sx-softing-vining-2000.dtb \
  	imx6sx-udoo-neo-basic.dtb \
  	imx6sx-udoo-neo-extended.dtb \
@@ -25,10 +25,10 @@ index a724d1a7a9a0..0386d6d6f923 100644
  	imx6ul-ccimx6ulsbcexpress.dtb \
 diff --git a/arch/arm/boot/dts/nxp/imx/imx6sx-lm.dts b/arch/arm/boot/dts/nxp/imx/imx6sx-lm.dts
 new file mode 100644
-index 000000000000..a6fb8fc56d96
+index 000000000000..e264d707f350
 --- /dev/null
 +++ b/arch/arm/boot/dts/nxp/imx/imx6sx-lm.dts
-@@ -0,0 +1,144 @@
+@@ -0,0 +1,158 @@
 +/dts-v1/;
 +
 +#include <dt-bindings/gpio/gpio.h>
@@ -36,6 +36,13 @@ index 000000000000..a6fb8fc56d96
 +#include <dt-bindings/leds/common.h>
 +#include "imx6sx.dtsi"
 +
++&uart1 {
++    status = "okay";
++    pinctrl-names = "default";
++    pinctrl-0 = <&pinctrl_uart1>;
++};
++
++/* console UART */
 +&uart6 {
 +    status = "okay";
 +};
@@ -124,6 +131,13 @@ index 000000000000..a6fb8fc56d96
 +            MX6SX_PAD_KEY_ROW2__CAN1_RX	0x1b020
 +        >;
 +    };
++
++    pinctrl_uart1: uart1grp {
++        fsl,pins = <
++            MX6SX_PAD_GPIO1_IO04__UART1_TX 0x1b0b1
++            MX6SX_PAD_GPIO1_IO05__UART1_RX 0x1b0b1
++        >;
++    };
 +};
 +
 +&kpp {
@@ -174,5 +188,5 @@ index 000000000000..a6fb8fc56d96
 +    };
 +};
 -- 
-2.43.0
+2.34.1
 
