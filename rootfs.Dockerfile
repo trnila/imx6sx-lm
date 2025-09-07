@@ -33,6 +33,7 @@ RUN cd /tmp \
 
 RUN sed -i 's/#\s*en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen \
     && locale-gen
+RUN passwd -d root
 RUN userdel -r alarm
 RUN sed -Ei 's/\s*#\s*PermitRootLogin/PermitRootLogin/' /etc/ssh/sshd_config
 RUN sed -Ei 's/\s*#\s*PasswordAuthentication\s+(yes|no)/PasswordAuthentication no/' /etc/ssh/sshd_config
