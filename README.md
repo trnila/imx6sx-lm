@@ -1,6 +1,7 @@
 # imx6sx-lm board with latest u-boot and linux kernel
 
 ```shell-session
+$ git clone --recurse-submodules --shallow-submodules https://github.com/trnila/imx6sx-lm
 $ ./build.sh
 ```
 
