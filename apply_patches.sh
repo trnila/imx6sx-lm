@@ -9,3 +9,6 @@ apply_patches() (
 git submodule update --init
 apply_patches u-boot
 apply_patches linux
+
+cd linux
+git am ../linux-lin/sllin/linux-patches/*.patch
