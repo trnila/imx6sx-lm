@@ -21,3 +21,18 @@ $ ./build.sh
    pc$ ./write_rootfs.sh /dev/sdX1`
    ```
 4. Power reset the board
+
+## LIN
+## IMX6 as a master
+```sh
+pc$ ./lin_dev.sh
+pc$ uv run ./lin_slave.py
+imx6$ cansend sllin0 014#abcd
+```
+
+## IMX6 as a slave
+```sh
+pc$ ./lin_dev.sh master=0
+pc$ uv run ./lin_master.py
+imx6$ cansend sllin0 000000d4#1122
+```
