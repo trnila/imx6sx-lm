@@ -13,7 +13,7 @@ fi
 docker build --build-arg FROM="$BASE_IMAGE_NAME" -t "$IMAGE_NAME" -f rootfs.Dockerfile .
 
 # extract into directory
-sudo rm -rf "./$ROOTFS_DIR"
+sudo rm -rf "$ROOTFS_DIR"
 mkdir -p "$ROOTFS_DIR"
 CONTAINER=$(docker container create "$IMAGE_NAME" true)
 docker export "$CONTAINER" | sudo bsdtar -xpf - -C "$ROOTFS_DIR/"
