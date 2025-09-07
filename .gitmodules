@@ -4,3 +4,6 @@
 [submodule "linux"]
 	path = linux
 	url = https://github.com/torvalds/linux.git
+[submodule "linux-lin"]
+	path = linux-lin
+	url = https://github.com/trnila/linux-lin
