@@ -22,7 +22,7 @@ sample_time_s = 10
 
 
 def writer(stop_event: threading.Event):
-    with serial.Serial("/dev/ttyUSB1", baudrate=115200) as ser:
+    with serial.Serial("/dev/ttyUSB0", baudrate=115200) as ser:
         while not stop_event.is_set():
             ser.write(b"a")
             time.sleep(0.1)
