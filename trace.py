@@ -18,10 +18,14 @@ def ssh(cmd):
     subprocess.check_call(["ssh", "imx6"] + shlex.split(cmd))
 
 
-first, second = "imx_uart_int", "sllin_receive_buf"
-first, second = "sllin_receive_buf", "sllin_send_tx_buff"
+#first, second = "imx_uart_int", "sllin_receive_buf"
+#first, second = "sllin_receive_buf", "sllin_send_tx_buff"
 #first, second = "imx_uart_int", "sllin_send_tx_buff"
-
+#first, second = "__imx_uart_rxint.constprop.0", "sllin_receive_buf"
+first, second = "imx_uart_int", "__imx_uart_rxint.constprop.0"
+#first, second = "__imx_uart_rxint.constprop.0", "sllin_send_tx_buff"
+#first, second = "sllin_send_tx_buff", "imx_uart_transmit_buffer"
+#first, second = "__imx_uart_rxint.constprop.0", "imx_uart_transmit_buffer"
 
 if 1:
     ssh("echo 0 > /sys/kernel/debug/tracing/tracing_on")
