@@ -347,7 +347,7 @@ index 00000000..3b2860dd
 --- /dev/null
 +++ b/board/trnila/mx6sxlm/mx6sxlm.env
 @@ -0,0 +1,3 @@
-+bootargs=console=ttymxc5,115200 root=/dev/mmcblk3p1 rw
++bootargs=console=ttymxc5,115200 root=/dev/mmcblk3p1 rw cpuidle.off=1
 +bootcmd=bootz 0x80800000 - 0x83000000
 +initrd_high=0xffffffff
 \ No newline at end of file
