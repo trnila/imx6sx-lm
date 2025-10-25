@@ -1,6 +1,8 @@
 /dts-v1/;
 /plugin/;
 
+//#include <dt-bindings/pinctrl/am33xx.h>
+
 / {
     compatible = "ti,beaglebone", "ti,beaglebone-black";
 
@@ -13,4 +15,28 @@
             };
         };
     };
+
+    fragment@1 {
+        target-path = "/ocp/interconnect@48000000/segment@100000/target-module@a8000/serial@0";
+        __overlay__ {
+            status = "okay";
+            pinctrl-names = "default";
+            pinctrl-0 = <&bb_uart4_pins>;
+        };
+    };
+
+    fragment@2 {
+        target-path = "/ocp/interconnect@44c00000/segment@200000/target-module@10000/scm@0/pinmux@800";
+        __overlay__ {
+            bb_uart4_pins: pinmux_bb_uart4_pins {
+                pinctrl-single,pins = <
+                    116 8 6
+                    112 40 6
+                >;
+            };
+        };
+    };
 };
+/*
+ttyS0  ttyS1  ttyS2  ttyS4
+*/
