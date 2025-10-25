@@ -41,6 +41,7 @@ sudo cp ./u-boot/u-boot.img /mnt/boot/
 #sudo cp ./linux/arch/arm/boot/zImage /mnt/boot
 #sudo cp ./linux/arch/arm/boot/dts/ti/omap/am335x-boneblack-wireless.dtb /mnt/boot
 sudo rsync -avzP ../stm/build/rootfs/* /mnt/
+sudo make -C linux modules_install INSTALL_MOD_PATH=/mnt/
 
 dtc -I dts my.dts -O dtb > my.dtbo
 sudo mkimage -f boot.its /mnt/boot/boot.itb
