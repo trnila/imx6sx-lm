@@ -1,0 +1,53 @@
+[TRACE]  : Command Line parsing started
+[TRACE]  : Command: -arch zynq -image /home/daniel-trnka/imx6sx-lm/arty/artyz7_linux/images/linux/bootgen.bif -o /home/daniel-trnka/imx6sx-lm/arty/artyz7_linux/images/linux/BOOT.BIN -log trace
+[INFO]   : Command line parsing completed successfully
+[TRACE]  : BIF File: /home/daniel-trnka/imx6sx-lm/arty/artyz7_linux/images/linux/bootgen.bif
+[TRACE]  : Parsing BIF file - bootgen.bif
+[INFO]   : BIF file parsed successfully - bootgen.bif 
+[INFO]   : Parsing Partition Data to Image
+[INFO]   : Building image - the_ROM_image
+[INFO]   : Building the Partition Header Table
+[INFO]   : After build 
+           -- Dump of Binary Image ----
+   Offset     Length      Reserve     Name
+ 00000000   000008a0   00000000   BootHeader
+ 00000000   00000040   00000000   ImageHeaderTable
+ 00000000   00000024   00000000   ImageHeader zynq_fsbl.elf
+ 00000000   00000020   00000000   ImageHeader u-boot.elf
+ 00000000   00000020   00000000   ImageHeader system.dtb
+ 00000000   00000020   00000000   ImageHeader boot.scr
+ 00000000   00000020   00000280   ImageHeader image.ub
+ 00000000   00000040   00000000   PartitionHeader zynq_fsbl.elf.0
+ 00000000   00000040   00000000   PartitionHeader u-boot.elf.0
+ 00000000   00000040   00000000   PartitionHeader system.dtb.0
+ 00000000   00000040   00000000   PartitionHeader boot.scr.0
+ 00000000   00000040   00000000   PartitionHeader image.ub.0
+ 00000000   00000040   00000940   PartitionHeader Null
+ 00000000   00018010   00000000   zynq_fsbl.elf.0
+ 00000000   00102160   00000000   u-boot.elf.0
+ 00000000   00004948   00000000   system.dtb.0
+ 009c0000   00000ef8   00000000   boot.scr.0
+ 00500000   01dc5fd4   00000000   image.ub.0
+           -- End of Dump
+           -- Dump of Binary Image ----
+   Offset     Length      Reserve     Name
+ 00000000   000008a0   00000000   BootHeader
+ 000008c0   00000040   00000000   ImageHeaderTable
+ 00000900   00000024   00000000   ImageHeader zynq_fsbl.elf
+ 00000940   00000020   00000000   ImageHeader u-boot.elf
+ 00000980   00000020   00000000   ImageHeader system.dtb
+ 000009c0   00000020   00000000   ImageHeader boot.scr
+ 00000a00   00000020   00000280   ImageHeader image.ub
+ 00000c80   00000040   00000000   PartitionHeader zynq_fsbl.elf.0
+ 00000cc0   00000040   00000000   PartitionHeader u-boot.elf.0
+ 00000d00   00000040   00000000   PartitionHeader system.dtb.0
+ 00000d40   00000040   00000000   PartitionHeader boot.scr.0
+ 00000d80   00000040   00000000   PartitionHeader image.ub.0
+ 00000dc0   00000040   00000940   PartitionHeader Null
+ 00001700   00018010   00000000   zynq_fsbl.elf.0
+ 00019740   00102160   00000000   u-boot.elf.0
+ 0011b8c0   00004948   00000000   system.dtb.0
+ 009c0000   00000ef8   00000000   boot.scr.0
+ 00500000   01dc5fd4   00000000   image.ub.0
+           -- End of Dump
+[ERROR]  : Section image.ub.0 offset of 0x500000 overlaps with prior section end address of 0x9C0F00
