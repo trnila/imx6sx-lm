@@ -1,0 +1,43 @@
+/dts-v1/;
+
+/ {
+	description = "BeagleBone Black FIT Image";
+
+	images {
+		kernel {
+			description = "Linux Kernel";
+			data = /incbin/("./linux/arch/arm/boot/zImage");
+			type = "kernel";
+			arch = "arm";
+			os = "linux";
+			compression = "none";
+			load = < 0x80008000 >;
+			entry = < 0x80008000 >;
+		};
+
+		fdt {
+			description = "Device Tree";
+			data = /incbin/("linux/arch/arm/boot/dts/ti/omap/am335x-boneblack-wireless.dtb");
+			type = "flat_dt";
+			arch = "arm";
+			compression = "none";
+		};
+
+		myfdt {
+            data = /incbin/("./my.dtbo");
+            type = "flat_dt";
+            arch = "arm";
+            load = <0x87fc0000>;
+        };
+	};
+
+	configurations {
+		default = "conf";
+
+		conf {
+			kernel = "kernel";
+			fdt = "fdt", "myfdt";
+			cmdline = "console=ttyS0,115200 root=/dev/mmcblk0p2 rw rootwait";
+		};
+	};
+};

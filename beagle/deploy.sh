@@ -2,6 +2,7 @@ set -ex
 
 source ./config.sh
 make -C u-boot am335x_evm_config
+(cd u-boot/ && ./scripts/config --set-val CONFIG_BOOTCOMMAND '"fatload mmc 0:1 ${loadaddr} boot.itb; bootm ${loadaddr}"')
 make -C u-boot -j"$(nproc)" all
 
 #make -C linux multi_v7_defconfig
@@ -40,12 +41,23 @@ sudo cp ./u-boot/u-boot.img /mnt/boot/
 sudo cp ./linux/arch/arm/boot/zImage /mnt/boot
 sudo cp ./linux/arch/arm/boot/dts/ti/omap/am335x-boneblack-wireless.dtb /mnt/boot
 sudo rsync -avzP ../stm/build/rootfs/* /mnt/
-sync
 
+dtc -I dts my.dts -O dtb > my.dtbo
+sudo mkimage -f boot.its /mnt/boot/boot.itb
+#sudo cp boot.txt /mnt/boot
+#sudo mkimage -A arm -T script -C none -n "Boot Script" -d /mnt/boot/boot.txt /mnt/boot/boot.scr
+
+
+sync
 sudo umount /mnt/boot /mnt
 
+
+# fatload mmc 0:1 ${loadaddr} boot.itb; bootm ${loadaddr}
+# bootm ${loadaddr}
 
 # fatload mmc 0:1 ${loadaddr} zImage
 # fatload mmc 0:1 ${fdtaddr} am335x-boneblack-wireless.dtb
 # setenv bootargs 'console=ttyS0,115200n8 root=/dev/mmcblk0p2 rw rootwait'
 # bootz ${loadaddr} - ${fdtaddr}
+
+# scan_dev_for_boot;
