@@ -37,7 +37,7 @@
 		conf {
 			kernel = "kernel";
 			fdt = "fdt", "myfdt";
-			cmdline = "console=ttyS0,115200 root=/dev/mmcblk0p2 rw rootwait";
+			/*cmdline = "console=ttyS0,115200 root=/dev/mmcblk0p2 rw rootwait";*/
 		};
 	};
 };

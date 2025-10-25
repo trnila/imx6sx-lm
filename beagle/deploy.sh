@@ -5,8 +5,8 @@ make -C u-boot am335x_evm_config
 (cd u-boot/ && ./scripts/config --set-val CONFIG_BOOTCOMMAND '"fatload mmc 0:1 ${loadaddr} boot.itb; bootm ${loadaddr}"')
 make -C u-boot -j"$(nproc)" all
 
-#make -C linux multi_v7_defconfig
-#make -C linux -j"$(nproc)"
+make -C linux multi_v7_defconfig
+make -C linux -j"$(nproc)"
 
 #sudo rsync -avzP ./build/rootfs/* /mnt/
 
@@ -38,8 +38,8 @@ sudo mount ${DEVICE}p1 /mnt/boot
 sudo cp ./u-boot/MLO /mnt/boot
 sudo cp ./u-boot/u-boot.img /mnt/boot/
 
-sudo cp ./linux/arch/arm/boot/zImage /mnt/boot
-sudo cp ./linux/arch/arm/boot/dts/ti/omap/am335x-boneblack-wireless.dtb /mnt/boot
+#sudo cp ./linux/arch/arm/boot/zImage /mnt/boot
+#sudo cp ./linux/arch/arm/boot/dts/ti/omap/am335x-boneblack-wireless.dtb /mnt/boot
 sudo rsync -avzP ../stm/build/rootfs/* /mnt/
 
 dtc -I dts my.dts -O dtb > my.dtbo
