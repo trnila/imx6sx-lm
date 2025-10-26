@@ -13,9 +13,13 @@ vlib questa_lib/msim/interrupt_control_v3_1_5
 vlib questa_lib/msim/axi_gpio_v2_0_33
 vlib questa_lib/msim/proc_sys_reset_v5_0_15
 vlib questa_lib/msim/generic_baseblocks_v2_1_2
+vlib questa_lib/msim/axi_register_slice_v2_1_31
 vlib questa_lib/msim/fifo_generator_v13_2_10
 vlib questa_lib/msim/axi_data_fifo_v2_1_30
-vlib questa_lib/msim/axi_register_slice_v2_1_31
+vlib questa_lib/msim/axi_crossbar_v2_1_32
+vlib questa_lib/msim/lib_pkg_v1_0_4
+vlib questa_lib/msim/lib_srl_fifo_v1_0_4
+vlib questa_lib/msim/axi_uartlite_v2_0_35
 vlib questa_lib/msim/axi_protocol_converter_v2_1_31
 
 vmap xilinx_vip questa_lib/msim/xilinx_vip
@@ -30,9 +34,13 @@ vmap interrupt_control_v3_1_5 questa_lib/msim/interrupt_control_v3_1_5
 vmap axi_gpio_v2_0_33 questa_lib/msim/axi_gpio_v2_0_33
 vmap proc_sys_reset_v5_0_15 questa_lib/msim/proc_sys_reset_v5_0_15
 vmap generic_baseblocks_v2_1_2 questa_lib/msim/generic_baseblocks_v2_1_2
+vmap axi_register_slice_v2_1_31 questa_lib/msim/axi_register_slice_v2_1_31
 vmap fifo_generator_v13_2_10 questa_lib/msim/fifo_generator_v13_2_10
 vmap axi_data_fifo_v2_1_30 questa_lib/msim/axi_data_fifo_v2_1_30
-vmap axi_register_slice_v2_1_31 questa_lib/msim/axi_register_slice_v2_1_31
+vmap axi_crossbar_v2_1_32 questa_lib/msim/axi_crossbar_v2_1_32
+vmap lib_pkg_v1_0_4 questa_lib/msim/lib_pkg_v1_0_4
+vmap lib_srl_fifo_v1_0_4 questa_lib/msim/lib_srl_fifo_v1_0_4
+vmap axi_uartlite_v2_0_35 questa_lib/msim/axi_uartlite_v2_0_35
 vmap axi_protocol_converter_v2_1_31 questa_lib/msim/axi_protocol_converter_v2_1_31
 
 vlog -work xilinx_vip -64 -incr -mfcu  -sv -L axi_vip_v1_1_17 -L processing_system7_vip_v1_0_19 -L xilinx_vip "+incdir+/tools/Xilinx/Vivado/2024.1/data/xilinx_vip/include" \
@@ -93,6 +101,9 @@ vlog -work xil_defaultlib -64 -incr -mfcu  "+incdir+../../../../vivado3.gen/sour
 vlog -work generic_baseblocks_v2_1_2 -64 -incr -mfcu  "+incdir+../../../../vivado3.gen/sources_1/bd/design_2/ipshared/ec67/hdl" "+incdir+../../../../vivado3.gen/sources_1/bd/design_2/ipshared/b28c/hdl" "+incdir+/tools/Xilinx/Vivado/2024.1/data/xilinx_vip/include" \
 "../../../../vivado3.gen/sources_1/bd/design_2/ipshared/0c28/hdl/generic_baseblocks_v2_1_vl_rfs.v" \
 
+vlog -work axi_register_slice_v2_1_31 -64 -incr -mfcu  "+incdir+../../../../vivado3.gen/sources_1/bd/design_2/ipshared/ec67/hdl" "+incdir+../../../../vivado3.gen/sources_1/bd/design_2/ipshared/b28c/hdl" "+incdir+/tools/Xilinx/Vivado/2024.1/data/xilinx_vip/include" \
+"../../../../vivado3.gen/sources_1/bd/design_2/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v" \
+
 vlog -work fifo_generator_v13_2_10 -64 -incr -mfcu  "+incdir+../../../../vivado3.gen/sources_1/bd/design_2/ipshared/ec67/hdl" "+incdir+../../../../vivado3.gen/sources_1/bd/design_2/ipshared/b28c/hdl" "+incdir+/tools/Xilinx/Vivado/2024.1/data/xilinx_vip/include" \
 "../../../../vivado3.gen/sources_1/bd/design_2/ipshared/1443/simulation/fifo_generator_vlog_beh.v" \
 
@@ -105,8 +116,23 @@ vlog -work fifo_generator_v13_2_10 -64 -incr -mfcu  "+incdir+../../../../vivado3
 vlog -work axi_data_fifo_v2_1_30 -64 -incr -mfcu  "+incdir+../../../../vivado3.gen/sources_1/bd/design_2/ipshared/ec67/hdl" "+incdir+../../../../vivado3.gen/sources_1/bd/design_2/ipshared/b28c/hdl" "+incdir+/tools/Xilinx/Vivado/2024.1/data/xilinx_vip/include" \
 "../../../../vivado3.gen/sources_1/bd/design_2/ipshared/9692/hdl/axi_data_fifo_v2_1_vl_rfs.v" \
 
-vlog -work axi_register_slice_v2_1_31 -64 -incr -mfcu  "+incdir+../../../../vivado3.gen/sources_1/bd/design_2/ipshared/ec67/hdl" "+incdir+../../../../vivado3.gen/sources_1/bd/design_2/ipshared/b28c/hdl" "+incdir+/tools/Xilinx/Vivado/2024.1/data/xilinx_vip/include" \
-"../../../../vivado3.gen/sources_1/bd/design_2/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v" \
+vlog -work axi_crossbar_v2_1_32 -64 -incr -mfcu  "+incdir+../../../../vivado3.gen/sources_1/bd/design_2/ipshared/ec67/hdl" "+incdir+../../../../vivado3.gen/sources_1/bd/design_2/ipshared/b28c/hdl" "+incdir+/tools/Xilinx/Vivado/2024.1/data/xilinx_vip/include" \
+"../../../../vivado3.gen/sources_1/bd/design_2/ipshared/e9d8/hdl/axi_crossbar_v2_1_vl_rfs.v" \
+
+vlog -work xil_defaultlib -64 -incr -mfcu  "+incdir+../../../../vivado3.gen/sources_1/bd/design_2/ipshared/ec67/hdl" "+incdir+../../../../vivado3.gen/sources_1/bd/design_2/ipshared/b28c/hdl" "+incdir+/tools/Xilinx/Vivado/2024.1/data/xilinx_vip/include" \
+"../../../bd/design_2/ip/design_2_xbar_0/sim/design_2_xbar_0.v" \
+
+vcom -work lib_pkg_v1_0_4 -64 -93  \
+"../../../../vivado3.gen/sources_1/bd/design_2/ipshared/8c68/hdl/lib_pkg_v1_0_rfs.vhd" \
+
+vcom -work lib_srl_fifo_v1_0_4 -64 -93  \
+"../../../../vivado3.gen/sources_1/bd/design_2/ipshared/1e5a/hdl/lib_srl_fifo_v1_0_rfs.vhd" \
+
+vcom -work axi_uartlite_v2_0_35 -64 -93  \
+"../../../../vivado3.gen/sources_1/bd/design_2/ipshared/2959/hdl/axi_uartlite_v2_0_vh_rfs.vhd" \
+
+vcom -work xil_defaultlib -64 -93  \
+"../../../bd/design_2/ip/design_2_axi_uartlite_0_0/sim/design_2_axi_uartlite_0_0.vhd" \
 
 vlog -work axi_protocol_converter_v2_1_31 -64 -incr -mfcu  "+incdir+../../../../vivado3.gen/sources_1/bd/design_2/ipshared/ec67/hdl" "+incdir+../../../../vivado3.gen/sources_1/bd/design_2/ipshared/b28c/hdl" "+incdir+/tools/Xilinx/Vivado/2024.1/data/xilinx_vip/include" \
 "../../../../vivado3.gen/sources_1/bd/design_2/ipshared/3c06/hdl/axi_protocol_converter_v2_1_vl_rfs.v" \

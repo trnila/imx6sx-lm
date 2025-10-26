@@ -9,5 +9,6 @@ pre-built/linux/
 *.o
 *.jou
 *.log
+.Xil
 components/plnx_workspace
 components/yocto

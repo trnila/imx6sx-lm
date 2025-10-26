@@ -2,7 +2,7 @@
 -- Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
--- Date        : Sun Oct 26 09:36:24 2025
+-- Date        : Sun Oct 26 10:51:11 2025
 -- Host        : danieltrnka-Precision-7560 running 64-bit Ubuntu 22.04.5 LTS
 -- Command     : write_vhdl -force -mode funcsim
 --               /home/daniel-trnka/imx6sx-lm/arty/vivado3/vivado3.gen/sources_1/bd/design_2/ip/design_2_processing_system7_0_0/design_2_processing_system7_0_0_sim_netlist.vhdl
@@ -3729,7 +3729,8 @@ PS7_i: unisim.vcomponents.PS7
       FTMTP2FTRIG(1) => PS7_i_n_719,
       FTMTP2FTRIG(0) => PS7_i_n_720,
       FTMTP2FTRIGACK(3 downto 0) => B"0000",
-      IRQF2P(19 downto 0) => B"00000000000000000000",
+      IRQF2P(19 downto 1) => B"0000000000000000000",
+      IRQF2P(0) => IRQ_F2P(0),
       IRQP2F(28) => PS7_i_n_292,
       IRQP2F(27) => PS7_i_n_293,
       IRQP2F(26) => PS7_i_n_294,
@@ -5693,6 +5694,7 @@ entity design_2_processing_system7_0_0 is
     M_AXI_GP0_BRESP : in STD_LOGIC_VECTOR ( 1 downto 0 );
     M_AXI_GP0_RRESP : in STD_LOGIC_VECTOR ( 1 downto 0 );
     M_AXI_GP0_RDATA : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    IRQ_F2P : in STD_LOGIC_VECTOR ( 0 to 0 );
     FCLK_CLK0 : out STD_LOGIC;
     FCLK_RESET0_N : out STD_LOGIC;
     MIO : inout STD_LOGIC_VECTOR ( 53 downto 0 );
@@ -6190,6 +6192,8 @@ architecture STRUCTURE of design_2_processing_system7_0_0 is
   attribute X_INTERFACE_INFO of DDR_DQS : signal is "xilinx.com:interface:ddrx:1.0 DDR DQS_P";
   attribute X_INTERFACE_PARAMETER of DDR_DQS : signal is "XIL_INTERFACENAME DDR, CAN_DEBUG false, TIMEPERIOD_PS 1250, MEMORY_TYPE COMPONENTS, DATA_WIDTH 8, CS_ENABLED true, DATA_MASK_ENABLED true, SLOT Single, MEM_ADDR_MAP ROW_COLUMN_BANK, BURST_LENGTH 8, AXI_ARBITRATION_SCHEME TDM, CAS_LATENCY 11, CAS_WRITE_LATENCY 11";
   attribute X_INTERFACE_INFO of DDR_DQS_n : signal is "xilinx.com:interface:ddrx:1.0 DDR DQS_N";
+  attribute X_INTERFACE_INFO of IRQ_F2P : signal is "xilinx.com:signal:interrupt:1.0 IRQ_F2P INTERRUPT";
+  attribute X_INTERFACE_PARAMETER of IRQ_F2P : signal is "XIL_INTERFACENAME IRQ_F2P, SENSITIVITY EDGE_RISING, PortWidth 1";
   attribute X_INTERFACE_INFO of MIO : signal is "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO MIO";
   attribute X_INTERFACE_INFO of M_AXI_GP0_ARADDR : signal is "xilinx.com:interface:aximm:1.0 M_AXI_GP0 ARADDR";
   attribute X_INTERFACE_INFO of M_AXI_GP0_ARBURST : signal is "xilinx.com:interface:aximm:1.0 M_AXI_GP0 ARBURST";
@@ -6406,7 +6410,7 @@ inst: entity work.design_2_processing_system7_0_0_processing_system7_v5_5_proces
       I2C1_SDA_I => '0',
       I2C1_SDA_O => NLW_inst_I2C1_SDA_O_UNCONNECTED,
       I2C1_SDA_T => NLW_inst_I2C1_SDA_T_UNCONNECTED,
-      IRQ_F2P(0) => '0',
+      IRQ_F2P(0) => IRQ_F2P(0),
       IRQ_P2F_CAN0 => NLW_inst_IRQ_P2F_CAN0_UNCONNECTED,
       IRQ_P2F_CAN1 => NLW_inst_IRQ_P2F_CAN1_UNCONNECTED,
       IRQ_P2F_CTI => NLW_inst_IRQ_P2F_CTI_UNCONNECTED,

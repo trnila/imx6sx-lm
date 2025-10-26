@@ -44,7 +44,7 @@ vivado.runs/
 vivado.sim/
 
 ###### for Xilinx Vivado|ISE
-.Xil/
+.Xil
 .cache/
 fsm_encoding.os
 tab_*/
