@@ -1,2 +1,2 @@
 uuu_version 1.2.39
-SDP: boot -f u-boot/u-boot-dtb.imx
+SDP: boot -f ../../out/imx6sx-lm/u-boot/u-boot-dtb.imx
