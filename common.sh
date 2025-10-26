@@ -55,8 +55,9 @@ run() {
         build_uboot
         build_linux
         build_linux_dtb
+        declare -F build_fit && build_fit
         build_sllin
-        build_recovery
+        declare -F build_recovery && build_recovery
         build_rootfs
     else
         for cmd in "$@"; do
