@@ -2,7 +2,7 @@
 set -ex
 
 DEVICE=/dev/mmcblk0
-sudo mkfs.ext4 "$DEVICE"p2 -L rootfs
+sudo mkfs.ext4 -F "$DEVICE"p2 -L rootfs
 sudo umount /mnt/boot /mnt || true
 sudo mount ${DEVICE}p2 /mnt
 sudo mkdir -p /mnt/boot

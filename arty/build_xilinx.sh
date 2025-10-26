@@ -7,7 +7,7 @@ cd artyz7_linux/
 
 sudo umount /mnt/boot /mnt || true
 
-petalinux-config --get-hw-description ../vivado3/design_2_wrapper.xsa
+petalinux-config --get-hw-description ../vivado3/design_2_wrapper.xsa --silentconfig
 petalinux-build
 petalinux-package --boot --u-boot --fpga --force
 
