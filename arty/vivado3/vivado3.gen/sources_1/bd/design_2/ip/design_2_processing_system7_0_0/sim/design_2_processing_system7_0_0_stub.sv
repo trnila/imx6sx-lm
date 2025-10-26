@@ -110,7 +110,7 @@ module design_2_processing_system7_0_0 (
   input bit [1 : 0] M_AXI_GP0_BRESP,
   input bit [1 : 0] M_AXI_GP0_RRESP,
   input bit [31 : 0] M_AXI_GP0_RDATA,
-  input bit [0 : 0] IRQ_F2P,
+  input bit [1 : 0] IRQ_F2P,
   output bit_as_bool FCLK_CLK0,
   output bit_as_bool FCLK_RESET0_N,
   output bit [53 : 0] MIO,
@@ -187,7 +187,7 @@ module design_2_processing_system7_0_0 (UART1_TX,UART1_RX,USB0_PORT_INDCTL,USB0_
   input bit [1 : 0] M_AXI_GP0_BRESP;
   input bit [1 : 0] M_AXI_GP0_RRESP;
   input bit [31 : 0] M_AXI_GP0_RDATA;
-  input bit [0 : 0] IRQ_F2P;
+  input bit [1 : 0] IRQ_F2P;
   output wire FCLK_CLK0;
   output wire FCLK_RESET0_N;
   inout wire [53 : 0] MIO;

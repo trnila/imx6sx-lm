@@ -2,7 +2,7 @@
 // Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-// Date        : Sun Oct 26 10:51:14 2025
+// Date        : Sun Oct 26 11:42:55 2025
 // Host        : danieltrnka-Precision-7560 running 64-bit Ubuntu 22.04.5 LTS
 // Command     : write_verilog -force -mode synth_stub
 //               /home/daniel-trnka/imx6sx-lm/arty/vivado3/vivado3.gen/sources_1/bd/design_2/ip/design_2_xbar_0/design_2_xbar_0_stub.v

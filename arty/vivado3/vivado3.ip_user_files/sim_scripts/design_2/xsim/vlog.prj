@@ -3,6 +3,7 @@ verilog xil_defaultlib --include "/tools/Xilinx/Vivado/2024.1/data/xilinx_vip/in
 "../../../bd/design_2/ip/design_2_blink_0_0/sim/design_2_blink_0_0.v" \
 "../../../bd/design_2/sim/design_2.v" \
 "../../../bd/design_2/ip/design_2_xbar_0/sim/design_2_xbar_0.v" \
+"../../../bd/design_2/ip/design_2_xlconcat_0_0/sim/design_2_xlconcat_0_0.v" \
 "../../../bd/design_2/ip/design_2_auto_pc_0/sim/design_2_auto_pc_0.v" \
 
 verilog xil_defaultlib "glbl.v"

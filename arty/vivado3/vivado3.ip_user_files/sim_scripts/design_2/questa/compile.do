@@ -20,6 +20,8 @@ vlib questa_lib/msim/axi_crossbar_v2_1_32
 vlib questa_lib/msim/lib_pkg_v1_0_4
 vlib questa_lib/msim/lib_srl_fifo_v1_0_4
 vlib questa_lib/msim/axi_uartlite_v2_0_35
+vlib questa_lib/msim/axi_uart16550_v2_0_33
+vlib questa_lib/msim/xlconcat_v2_1_6
 vlib questa_lib/msim/axi_protocol_converter_v2_1_31
 
 vmap xilinx_vip questa_lib/msim/xilinx_vip
@@ -41,6 +43,8 @@ vmap axi_crossbar_v2_1_32 questa_lib/msim/axi_crossbar_v2_1_32
 vmap lib_pkg_v1_0_4 questa_lib/msim/lib_pkg_v1_0_4
 vmap lib_srl_fifo_v1_0_4 questa_lib/msim/lib_srl_fifo_v1_0_4
 vmap axi_uartlite_v2_0_35 questa_lib/msim/axi_uartlite_v2_0_35
+vmap axi_uart16550_v2_0_33 questa_lib/msim/axi_uart16550_v2_0_33
+vmap xlconcat_v2_1_6 questa_lib/msim/xlconcat_v2_1_6
 vmap axi_protocol_converter_v2_1_31 questa_lib/msim/axi_protocol_converter_v2_1_31
 
 vlog -work xilinx_vip -64 -incr -mfcu  -sv -L axi_vip_v1_1_17 -L processing_system7_vip_v1_0_19 -L xilinx_vip "+incdir+/tools/Xilinx/Vivado/2024.1/data/xilinx_vip/include" \
@@ -133,6 +137,18 @@ vcom -work axi_uartlite_v2_0_35 -64 -93  \
 
 vcom -work xil_defaultlib -64 -93  \
 "../../../bd/design_2/ip/design_2_axi_uartlite_0_0/sim/design_2_axi_uartlite_0_0.vhd" \
+
+vcom -work axi_uart16550_v2_0_33 -64 -93  \
+"../../../../vivado3.gen/sources_1/bd/design_2/ipshared/ac30/hdl/axi_uart16550_v2_0_vh_rfs.vhd" \
+
+vcom -work xil_defaultlib -64 -93  \
+"../../../bd/design_2/ip/design_2_axi_uart16550_0_0/sim/design_2_axi_uart16550_0_0.vhd" \
+
+vlog -work xlconcat_v2_1_6 -64 -incr -mfcu  "+incdir+../../../../vivado3.gen/sources_1/bd/design_2/ipshared/ec67/hdl" "+incdir+../../../../vivado3.gen/sources_1/bd/design_2/ipshared/b28c/hdl" "+incdir+/tools/Xilinx/Vivado/2024.1/data/xilinx_vip/include" \
+"../../../../vivado3.gen/sources_1/bd/design_2/ipshared/6120/hdl/xlconcat_v2_1_vl_rfs.v" \
+
+vlog -work xil_defaultlib -64 -incr -mfcu  "+incdir+../../../../vivado3.gen/sources_1/bd/design_2/ipshared/ec67/hdl" "+incdir+../../../../vivado3.gen/sources_1/bd/design_2/ipshared/b28c/hdl" "+incdir+/tools/Xilinx/Vivado/2024.1/data/xilinx_vip/include" \
+"../../../bd/design_2/ip/design_2_xlconcat_0_0/sim/design_2_xlconcat_0_0.v" \
 
 vlog -work axi_protocol_converter_v2_1_31 -64 -incr -mfcu  "+incdir+../../../../vivado3.gen/sources_1/bd/design_2/ipshared/ec67/hdl" "+incdir+../../../../vivado3.gen/sources_1/bd/design_2/ipshared/b28c/hdl" "+incdir+/tools/Xilinx/Vivado/2024.1/data/xilinx_vip/include" \
 "../../../../vivado3.gen/sources_1/bd/design_2/ipshared/3c06/hdl/axi_protocol_converter_v2_1_vl_rfs.v" \

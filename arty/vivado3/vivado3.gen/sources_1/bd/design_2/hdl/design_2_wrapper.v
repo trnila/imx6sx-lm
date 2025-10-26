@@ -2,7 +2,7 @@
 //Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-//Date        : Sun Oct 26 10:50:22 2025
+//Date        : Sun Oct 26 11:41:55 2025
 //Host        : danieltrnka-Precision-7560 running 64-bit Ubuntu 22.04.5 LTS
 //Command     : generate_target design_2_wrapper.bd
 //Design      : design_2_wrapper
@@ -37,6 +37,8 @@ module design_2_wrapper
     ck_io1,
     ck_io2,
     ck_io3,
+    ck_io4,
+    ck_io5,
     led);
   inout [14:0]DDR_addr;
   inout [2:0]DDR_ba;
@@ -64,6 +66,8 @@ module design_2_wrapper
   output ck_io1;
   input ck_io2;
   output ck_io3;
+  input ck_io4;
+  output ck_io5;
   output led;
 
   wire [14:0]DDR_addr;
@@ -92,6 +96,8 @@ module design_2_wrapper
   wire ck_io1;
   wire ck_io2;
   wire ck_io3;
+  wire ck_io4;
+  wire ck_io5;
   wire led;
 
   design_2 design_2_i
@@ -121,5 +127,7 @@ module design_2_wrapper
         .ck_io1(ck_io1),
         .ck_io2(ck_io2),
         .ck_io3(ck_io3),
+        .ck_io4(ck_io4),
+        .ck_io5(ck_io5),
         .led(led));
 endmodule
