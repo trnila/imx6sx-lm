@@ -41,7 +41,7 @@ RUN sed -Ei 's/\s*#\s*PasswordAuthentication\s+(yes|no)/PasswordAuthentication n
 
 # install sllin.ko
 ARG BOARD
-RUN --mount=type=bind,source=build/${BOARD}/linux/include/config/,target=/mnt/config \
+RUN --mount=type=bind,source=out/${BOARD}/linux/include/config/,target=/mnt/config \
     --mount=type=bind,source=linux-lin,target=/mnt/linux-lin \
     KERNEL_RELEASE=$(< /mnt/config/kernel.release) \
     && install -D /mnt/linux-lin/sllin/sllin.ko /usr/lib/modules/$(</mnt/config/kernel.release)/extra/sllin.ko \

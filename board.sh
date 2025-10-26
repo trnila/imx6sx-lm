@@ -1,18 +1,6 @@
 #!/usr/bin/env bash
 set -ex
 
-BOARD_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[1]}")" &> /dev/null && pwd)
-ROOT_DIR="$BOARD_DIR/../../"
-BOARD=$(basename "$BOARD_DIR")
-
-export ROOT_DIR
-export BOARD_DIR
-export BOARD
-export ARCH=arm
-export CROSS_COMPILE=arm-linux-gnueabihf-
-export BUILD_DIR="$ROOT_DIR/build/$BOARD"
-export ROOTFS_DIR="$BUILD_DIR/rootfs"
-
 apply_patches() (
     cd "$ROOT_DIR"
     git submodule update --init
@@ -47,9 +35,20 @@ build_rootfs() {
     docker rm "$CONTAINER"
 }
 
-cd "$BOARD_DIR"
+build() {
+    board="$1"
+    shift
 
-run() {
+    ROOT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd)
+    export ROOT_DIR
+    export ARCH=arm
+    export CROSS_COMPILE=arm-linux-gnueabihf-
+    export BUILD_DIR="$ROOT_DIR/out/$BOARD"
+    export ROOTFS_DIR="$BUILD_DIR/rootfs"
+
+    cd "boards/$board"
+    # shellcheck disable=SC1090
+    source "$board.sh"
     if [ "$#" -eq 0 ]; then
         apply_patches
         build_uboot
@@ -66,3 +65,22 @@ run() {
     fi
     echo OK
 }
+
+action="$1"
+shift
+if [[ "$action" != "build" ]]; then
+    echo "Usage: $0 build"
+    exit 1
+fi
+
+if [ "$action" = "build" ]; then
+    BOARD="$1"
+    shift
+    if [[ -z "$BOARD" || "$BOARD" = "all" ]]; then
+        for board in boards/*; do
+            echo "${board#boards/}"
+        done
+    else
+        build "$BOARD" "$@"
+    fi
+fi
