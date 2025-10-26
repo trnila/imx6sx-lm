@@ -2,7 +2,7 @@
 set -ex
 
 BOARD_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[1]}")" &> /dev/null && pwd)
-ROOT_DIR="$BOARD_DIR/.."
+ROOT_DIR="$BOARD_DIR/../../"
 BOARD=$(basename "$BOARD_DIR")
 
 export ROOT_DIR
@@ -36,7 +36,7 @@ build_rootfs() {
         curl -L "$ROOTFS_URL" | docker import - "$BASE_IMAGE_NAME"
     fi
 
-    docker build --build-arg FROM="$BASE_IMAGE_NAME" --build-arg BOARD="$BOARD" -t "$IMAGE_NAME" -f "../$DOCKERFILE" ..
+    docker build --build-arg FROM="$BASE_IMAGE_NAME" --build-arg BOARD="$BOARD" -t "$IMAGE_NAME" -f "$ROOT_DIR/$DOCKERFILE" "$ROOT_DIR"
 
     # extract into directory
     sudo rm -rf "$ROOTFS_DIR"

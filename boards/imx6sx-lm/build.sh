@@ -1,23 +1,22 @@
-#!/bin/bash
-
-source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/../common.sh"
+#!/usr/bin/env bash
+source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/../../common.sh" || exit 1
 
 build_uboot() (
-    make -C ../u-boot O="$BUILD_DIR/u-boot" mx6sxlm_defconfig
-    make -C ../u-boot O="$BUILD_DIR/u-boot" -j"$(nproc)"
+    make -C "$ROOT_DIR/u-boot" O="$BUILD_DIR/u-boot" mx6sxlm_defconfig
+    make -C "$ROOT_DIR/u-boot" O="$BUILD_DIR/u-boot" -j"$(nproc)"
 )
 
 build_linux() (
-    make -C ../linux O="$BUILD_DIR/linux" imx_v6_v7_defconfig
-    make -C ../linux O="$BUILD_DIR/linux" -j"$(nproc)"
+    make -C "$ROOT_DIR/linux" O="$BUILD_DIR/linux" imx_v6_v7_defconfig
+    make -C "$ROOT_DIR/linux" O="$BUILD_DIR/linux" -j"$(nproc)"
 )
 
 build_linux_dtb() (
-    make -C ../linux O="$BUILD_DIR/linux" nxp/imx/imx6sx-lm.dtb
+    make -C "$ROOT_DIR/linux" O="$BUILD_DIR/linux" nxp/imx/imx6sx-lm.dtb
 )
 
 build_sllin() (
-    make -C ../linux O="$BUILD_DIR/linux" M="$(pwd)/../linux-lin/sllin/" modules
+    make -C "$ROOT_DIR/linux" O="$BUILD_DIR/linux" M="$ROOT_DIR/linux-lin/sllin/" modules
 )
 
 build_recovery() (
