@@ -35,20 +35,39 @@ build_rootfs() {
     docker rm "$CONTAINER"
 }
 
-build() {
-    board="$1"
-    shift
+partition() {
+    echo "${1}p${2}"
+}
 
-    ROOT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd)
-    export ROOT_DIR
-    export ARCH=arm
-    export CROSS_COMPILE=arm-linux-gnueabihf-
-    export BUILD_DIR="$ROOT_DIR/out/$BOARD"
-    export ROOTFS_DIR="$BUILD_DIR/rootfs"
+action="$1"
+BOARD="$2"
+shift || true
+shift || true
+if [[ "$action" != "build" && "$action" != "write" ]]; then
+    echo "Usage: $0 build"
+    exit 1
+fi
 
-    cd "boards/$board"
-    # shellcheck disable=SC1090
-    source "$board.sh"
+if [[ "$action" = "build" ]] && [[ -z "$BOARD" || "$BOARD" = "all" ]]; then
+    for board in boards/*; do
+        "$0" build "$(basename "$board")" "$@"
+    done
+    exit 0
+fi
+
+ROOT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd)
+export ARCH=arm
+export CROSS_COMPILE=arm-linux-gnueabihf-
+export BUILD_DIR="$ROOT_DIR/out/$BOARD"
+export ROOTFS_DIR="$BUILD_DIR/rootfs"
+export BOARD
+export ROOT_DIR
+
+cd "boards/$BOARD"
+# shellcheck disable=SC1090
+source "$BOARD.sh"
+
+if [ "$action" = "build" ]; then
     if [ "$#" -eq 0 ]; then
         apply_patches
         build_rootfs
@@ -64,23 +83,38 @@ build() {
         done
     fi
     echo OK
-}
-
-action="$1"
-shift
-if [[ "$action" != "build" ]]; then
-    echo "Usage: $0 build"
-    exit 1
-fi
-
-if [ "$action" = "build" ]; then
-    BOARD="$1"
-    shift || true
-    if [[ -z "$BOARD" || "$BOARD" = "all" ]]; then
-        for board in boards/*; do
-            "$0" build "$(basename "$board")" "$@"
-        done
-    else
-        build "$BOARD" "$@"
+elif [ "$action" = "write" ]; then
+    SDCARD="$1"
+    if [ -z "$SDCARD" ]; then
+        echo "Missing sdcard argument e.g. /dev/mmcblkX"
+        exit
     fi
+
+    MNT="$ROOT_DIR/mnt"
+    mkdir -p "$MNT"
+
+    cleanup() {
+        mount | cut -f 3 -d ' ' | grep "$MNT" | xargs -I{} sudo umount -l {} || true
+    }
+
+    trap cleanup EXIT
+    cleanup || true
+
+    declare -F rootfs_partition && rootfs_partition
+    rootfs_mount
+    rootfs_write
+
+    # configure hostname
+    echo "$BOARD" | sudo tee "$MNT/etc/hostname"
+
+    # setup SSH keys
+    sudo mkdir -p "$MNT/root/.ssh/"
+    cat ~/.ssh/*.pub | sudo tee -a "$MNT/root/.ssh/authorized_keys"
+    sudo chown -R root "$MNT/root/.ssh/"
+
+    # flush & umount
+    sync
+    cleanup
+    trap - EXIT
+    echo OK
 fi
