@@ -58,6 +58,8 @@ _M_AXI_GP1_THREAD_ID_WIDTH=12,C_NUM_F2P_INTR_INPUTS=1,C_IRQ_F2P_MODE=DIRECT,C_DQ
 N=1,C_GP1_EN_MODIFIABLE_TXN=1}" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module design_2_processing_system7_0_0 (
+  UART1_TX,
+  UART1_RX,
   USB0_PORT_INDCTL,
   USB0_VBUS_PWRSELECT,
   USB0_VBUS_PWRFAULT,
@@ -125,6 +127,10 @@ module design_2_processing_system7_0_0 (
   PS_PORB
 );
 
+(* X_INTERFACE_INFO = "xilinx.com:interface:uart:1.0 UART_1 TxD" *)
+output wire UART1_TX;
+(* X_INTERFACE_INFO = "xilinx.com:interface:uart:1.0 UART_1 RxD" *)
+input wire UART1_RX;
 (* X_INTERFACE_INFO = "xilinx.com:display_processing_system7:usbctrl:1.0 USBIND_0 PORT_INDCTL" *)
 output wire [1 : 0] USB0_PORT_INDCTL;
 (* X_INTERFACE_INFO = "xilinx.com:display_processing_system7:usbctrl:1.0 USBIND_0 VBUS_PWRSELECT" *)
@@ -458,12 +464,12 @@ inout wire PS_PORB;
     .UART0_RX(1'B1),
     .UART1_DTRN(),
     .UART1_RTSN(),
-    .UART1_TX(),
+    .UART1_TX(UART1_TX),
     .UART1_CTSN(1'B0),
     .UART1_DCDN(1'B0),
     .UART1_DSRN(1'B0),
     .UART1_RIN(1'B0),
-    .UART1_RX(1'B1),
+    .UART1_RX(UART1_RX),
     .TTC0_WAVE0_OUT(),
     .TTC0_WAVE1_OUT(),
     .TTC0_WAVE2_OUT(),

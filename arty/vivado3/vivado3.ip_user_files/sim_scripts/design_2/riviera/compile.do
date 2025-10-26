@@ -68,7 +68,6 @@ vlog -work processing_system7_vip_v1_0_19  -incr "+incdir+../../../../vivado3.ge
 vlog -work xil_defaultlib  -incr -v2k5 "+incdir+../../../../vivado3.gen/sources_1/bd/design_2/ipshared/ec67/hdl" "+incdir+../../../../vivado3.gen/sources_1/bd/design_2/ipshared/b28c/hdl" "+incdir+/tools/Xilinx/Vivado/2024.1/data/xilinx_vip/include" -l xilinx_vip -l xpm -l axi_infrastructure_v1_1_0 -l axi_vip_v1_1_17 -l processing_system7_vip_v1_0_19 -l xil_defaultlib -l axi_lite_ipif_v3_0_4 -l lib_cdc_v1_0_3 -l interrupt_control_v3_1_5 -l axi_gpio_v2_0_33 -l proc_sys_reset_v5_0_15 -l generic_baseblocks_v2_1_2 -l fifo_generator_v13_2_10 -l axi_data_fifo_v2_1_30 -l axi_register_slice_v2_1_31 -l axi_protocol_converter_v2_1_31 \
 "../../../bd/design_2/ip/design_2_processing_system7_0_0/sim/design_2_processing_system7_0_0.v" \
 "../../../bd/design_2/ip/design_2_blink_0_0/sim/design_2_blink_0_0.v" \
-"../../../bd/design_2/sim/design_2.v" \
 
 vcom -work axi_lite_ipif_v3_0_4 -93  -incr \
 "../../../../vivado3.gen/sources_1/bd/design_2/ipshared/66ea/hdl/axi_lite_ipif_v3_0_vh_rfs.vhd" \
@@ -90,6 +89,9 @@ vcom -work proc_sys_reset_v5_0_15 -93  -incr \
 
 vcom -work xil_defaultlib -93  -incr \
 "../../../bd/design_2/ip/design_2_rst_ps7_0_100M_2/sim/design_2_rst_ps7_0_100M_2.vhd" \
+
+vlog -work xil_defaultlib  -incr -v2k5 "+incdir+../../../../vivado3.gen/sources_1/bd/design_2/ipshared/ec67/hdl" "+incdir+../../../../vivado3.gen/sources_1/bd/design_2/ipshared/b28c/hdl" "+incdir+/tools/Xilinx/Vivado/2024.1/data/xilinx_vip/include" -l xilinx_vip -l xpm -l axi_infrastructure_v1_1_0 -l axi_vip_v1_1_17 -l processing_system7_vip_v1_0_19 -l xil_defaultlib -l axi_lite_ipif_v3_0_4 -l lib_cdc_v1_0_3 -l interrupt_control_v3_1_5 -l axi_gpio_v2_0_33 -l proc_sys_reset_v5_0_15 -l generic_baseblocks_v2_1_2 -l fifo_generator_v13_2_10 -l axi_data_fifo_v2_1_30 -l axi_register_slice_v2_1_31 -l axi_protocol_converter_v2_1_31 \
+"../../../bd/design_2/sim/design_2.v" \
 
 vlog -work generic_baseblocks_v2_1_2  -incr -v2k5 "+incdir+../../../../vivado3.gen/sources_1/bd/design_2/ipshared/ec67/hdl" "+incdir+../../../../vivado3.gen/sources_1/bd/design_2/ipshared/b28c/hdl" "+incdir+/tools/Xilinx/Vivado/2024.1/data/xilinx_vip/include" -l xilinx_vip -l xpm -l axi_infrastructure_v1_1_0 -l axi_vip_v1_1_17 -l processing_system7_vip_v1_0_19 -l xil_defaultlib -l axi_lite_ipif_v3_0_4 -l lib_cdc_v1_0_3 -l interrupt_control_v3_1_5 -l axi_gpio_v2_0_33 -l proc_sys_reset_v5_0_15 -l generic_baseblocks_v2_1_2 -l fifo_generator_v13_2_10 -l axi_data_fifo_v2_1_30 -l axi_register_slice_v2_1_31 -l axi_protocol_converter_v2_1_31 \
 "../../../../vivado3.gen/sources_1/bd/design_2/ipshared/0c28/hdl/generic_baseblocks_v2_1_vl_rfs.v" \

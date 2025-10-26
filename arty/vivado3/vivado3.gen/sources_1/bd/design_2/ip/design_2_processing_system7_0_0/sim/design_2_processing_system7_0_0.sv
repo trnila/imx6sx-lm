@@ -677,6 +677,8 @@
 
 //MODULE DECLARATION
  module design_2_processing_system7_0_0 (
+  UART1_TX,
+  UART1_RX,
   USB0_PORT_INDCTL,
   USB0_VBUS_PWRSELECT,
   USB0_VBUS_PWRFAULT,
@@ -805,6 +807,8 @@
 
 //INPUT AND OUTPUT PORTS
 
+      output  UART1_TX;
+      input  UART1_RX;
       output  [1 : 0] USB0_PORT_INDCTL;
       output  USB0_VBUS_PWRSELECT;
       input  USB0_VBUS_PWRFAULT;
@@ -873,6 +877,7 @@
 
 //REG DECLARATIONS
 
+      reg UART1_TX;
       reg [1 : 0] USB0_PORT_INDCTL;
       reg USB0_VBUS_PWRSELECT;
       reg M_AXI_GP0_ARVALID;

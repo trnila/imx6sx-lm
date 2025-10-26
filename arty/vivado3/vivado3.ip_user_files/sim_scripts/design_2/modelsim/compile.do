@@ -65,7 +65,6 @@ vlog -work processing_system7_vip_v1_0_19 -64 -incr -mfcu  -sv -L axi_vip_v1_1_1
 vlog -work xil_defaultlib -64 -incr -mfcu  "+incdir+../../../../vivado3.gen/sources_1/bd/design_2/ipshared/ec67/hdl" "+incdir+../../../../vivado3.gen/sources_1/bd/design_2/ipshared/b28c/hdl" "+incdir+/tools/Xilinx/Vivado/2024.1/data/xilinx_vip/include" \
 "../../../bd/design_2/ip/design_2_processing_system7_0_0/sim/design_2_processing_system7_0_0.v" \
 "../../../bd/design_2/ip/design_2_blink_0_0/sim/design_2_blink_0_0.v" \
-"../../../bd/design_2/sim/design_2.v" \
 
 vcom -work axi_lite_ipif_v3_0_4 -64 -93  \
 "../../../../vivado3.gen/sources_1/bd/design_2/ipshared/66ea/hdl/axi_lite_ipif_v3_0_vh_rfs.vhd" \
@@ -87,6 +86,9 @@ vcom -work proc_sys_reset_v5_0_15 -64 -93  \
 
 vcom -work xil_defaultlib -64 -93  \
 "../../../bd/design_2/ip/design_2_rst_ps7_0_100M_2/sim/design_2_rst_ps7_0_100M_2.vhd" \
+
+vlog -work xil_defaultlib -64 -incr -mfcu  "+incdir+../../../../vivado3.gen/sources_1/bd/design_2/ipshared/ec67/hdl" "+incdir+../../../../vivado3.gen/sources_1/bd/design_2/ipshared/b28c/hdl" "+incdir+/tools/Xilinx/Vivado/2024.1/data/xilinx_vip/include" \
+"../../../bd/design_2/sim/design_2.v" \
 
 vlog -work generic_baseblocks_v2_1_2 -64 -incr -mfcu  "+incdir+../../../../vivado3.gen/sources_1/bd/design_2/ipshared/ec67/hdl" "+incdir+../../../../vivado3.gen/sources_1/bd/design_2/ipshared/b28c/hdl" "+incdir+/tools/Xilinx/Vivado/2024.1/data/xilinx_vip/include" \
 "../../../../vivado3.gen/sources_1/bd/design_2/ipshared/0c28/hdl/generic_baseblocks_v2_1_vl_rfs.v" \

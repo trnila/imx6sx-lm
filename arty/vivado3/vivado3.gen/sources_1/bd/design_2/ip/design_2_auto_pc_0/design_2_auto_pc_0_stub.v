@@ -2,10 +2,10 @@
 // Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-// Date        : Sat Oct 25 23:01:42 2025
+// Date        : Sat Oct 25 23:01:41 2025
 // Host        : danieltrnka-Precision-7560 running 64-bit Ubuntu 22.04.5 LTS
-// Command     : write_verilog -force -mode synth_stub
-//               /home/daniel-trnka/imx6sx-lm/arty/vivado3/vivado3.gen/sources_1/bd/design_2/ip/design_2_auto_pc_0/design_2_auto_pc_0_stub.v
+// Command     : write_verilog -force -mode synth_stub -rename_top design_2_auto_pc_0 -prefix
+//               design_2_auto_pc_0_ design_2_auto_pc_0_stub.v
 // Design      : design_2_auto_pc_0
 // Purpose     : Stub declaration of top-level module interface
 // Device      : xc7z020clg400-1

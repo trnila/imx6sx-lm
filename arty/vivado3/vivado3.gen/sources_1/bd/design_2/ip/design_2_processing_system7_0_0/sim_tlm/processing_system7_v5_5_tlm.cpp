@@ -144,6 +144,8 @@ void add_extensions_to_tlm(const xtlm::aximm_payload* xtlm_pay, tlm::tlm_generic
 
 processing_system7_v5_5_tlm :: processing_system7_v5_5_tlm (sc_core::sc_module_name name,
     xsc::common_cpp::properties& _prop): sc_module(name)//registering module name with parent
+        ,UART1_TX("UART1_TX")
+        ,UART1_RX("UART1_RX")
         ,USB0_PORT_INDCTL("USB0_PORT_INDCTL")
         ,USB0_VBUS_PWRSELECT("USB0_VBUS_PWRSELECT")
         ,USB0_VBUS_PWRFAULT("USB0_VBUS_PWRFAULT")

@@ -2,7 +2,7 @@
 //Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-//Date        : Sat Oct 25 23:00:54 2025
+//Date        : Sun Oct 26 09:35:36 2025
 //Host        : danieltrnka-Precision-7560 running 64-bit Ubuntu 22.04.5 LTS
 //Command     : generate_target design_2.bd
 //Design      : design_2
@@ -34,6 +34,8 @@ module design_2
     FIXED_IO_ps_porb,
     FIXED_IO_ps_srstb,
     axileds,
+    ck_io0,
+    ck_io1,
     led);
   (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR ADDR" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME DDR, AXI_ARBITRATION_SCHEME TDM, BURST_LENGTH 8, CAN_DEBUG false, CAS_LATENCY 11, CAS_WRITE_LATENCY 11, CS_ENABLED true, DATA_MASK_ENABLED true, DATA_WIDTH 8, MEMORY_TYPE COMPONENTS, MEM_ADDR_MAP ROW_COLUMN_BANK, SLOT Single, TIMEPERIOD_PS 1250" *) inout [14:0]DDR_addr;
   (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR BA" *) inout [2:0]DDR_ba;
@@ -57,10 +59,13 @@ module design_2
   (* X_INTERFACE_INFO = "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO PS_PORB" *) inout FIXED_IO_ps_porb;
   (* X_INTERFACE_INFO = "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO PS_SRSTB" *) inout FIXED_IO_ps_srstb;
   output [2:0]axileds;
+  input ck_io0;
+  output ck_io1;
   output led;
 
   wire [2:0]axi_gpio_0_gpio_io_o;
   wire blink_0_led;
+  wire ck_io0_1;
   wire [14:0]processing_system7_0_DDR_ADDR;
   wire [2:0]processing_system7_0_DDR_BA;
   wire processing_system7_0_DDR_CAS_N;
@@ -122,6 +127,7 @@ module design_2
   wire processing_system7_0_M_AXI_GP0_WREADY;
   wire [3:0]processing_system7_0_M_AXI_GP0_WSTRB;
   wire processing_system7_0_M_AXI_GP0_WVALID;
+  wire processing_system7_0_UART1_TX;
   wire [31:0]ps7_0_axi_periph_M00_AXI_ARADDR;
   wire ps7_0_axi_periph_M00_AXI_ARREADY;
   wire ps7_0_axi_periph_M00_AXI_ARVALID;
@@ -142,6 +148,8 @@ module design_2
   wire [0:0]rst_ps7_0_100M_peripheral_aresetn;
 
   assign axileds[2:0] = axi_gpio_0_gpio_io_o;
+  assign ck_io0_1 = ck_io0;
+  assign ck_io1 = processing_system7_0_UART1_TX;
   assign led = blink_0_led;
   design_2_axi_gpio_0_0 axi_gpio_0
        (.gpio_io_o(axi_gpio_0_gpio_io_o),
@@ -230,6 +238,8 @@ module design_2
         .PS_CLK(FIXED_IO_ps_clk),
         .PS_PORB(FIXED_IO_ps_porb),
         .PS_SRSTB(FIXED_IO_ps_srstb),
+        .UART1_RX(ck_io0_1),
+        .UART1_TX(processing_system7_0_UART1_TX),
         .USB0_VBUS_PWRFAULT(1'b0));
   design_2_ps7_0_axi_periph_2 ps7_0_axi_periph
        (.ACLK(processing_system7_0_FCLK_CLK0),

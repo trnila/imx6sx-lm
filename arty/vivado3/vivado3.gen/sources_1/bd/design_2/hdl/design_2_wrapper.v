@@ -2,7 +2,7 @@
 //Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-//Date        : Sat Oct 25 23:00:54 2025
+//Date        : Sun Oct 26 09:35:36 2025
 //Host        : danieltrnka-Precision-7560 running 64-bit Ubuntu 22.04.5 LTS
 //Command     : generate_target design_2_wrapper.bd
 //Design      : design_2_wrapper
@@ -33,6 +33,8 @@ module design_2_wrapper
     FIXED_IO_ps_porb,
     FIXED_IO_ps_srstb,
     axileds,
+    ck_io0,
+    ck_io1,
     led);
   inout [14:0]DDR_addr;
   inout [2:0]DDR_ba;
@@ -56,6 +58,8 @@ module design_2_wrapper
   inout FIXED_IO_ps_porb;
   inout FIXED_IO_ps_srstb;
   output [2:0]axileds;
+  input ck_io0;
+  output ck_io1;
   output led;
 
   wire [14:0]DDR_addr;
@@ -80,6 +84,8 @@ module design_2_wrapper
   wire FIXED_IO_ps_porb;
   wire FIXED_IO_ps_srstb;
   wire [2:0]axileds;
+  wire ck_io0;
+  wire ck_io1;
   wire led;
 
   design_2 design_2_i
@@ -105,5 +111,7 @@ module design_2_wrapper
         .FIXED_IO_ps_porb(FIXED_IO_ps_porb),
         .FIXED_IO_ps_srstb(FIXED_IO_ps_srstb),
         .axileds(axileds),
+        .ck_io0(ck_io0),
+        .ck_io1(ck_io1),
         .led(led));
 endmodule

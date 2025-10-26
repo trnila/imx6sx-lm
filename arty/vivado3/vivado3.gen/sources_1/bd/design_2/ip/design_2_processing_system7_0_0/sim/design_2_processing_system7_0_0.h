@@ -80,6 +80,8 @@ public:
 
   // module pin-to-pin RTL interface
 
+  sc_core::sc_out< bool > UART1_TX;
+  sc_core::sc_in< bool > UART1_RX;
   sc_core::sc_out< sc_dt::sc_bv<2> > USB0_PORT_INDCTL;
   sc_core::sc_out< bool > USB0_VBUS_PWRSELECT;
   sc_core::sc_in< bool > USB0_VBUS_PWRFAULT;
@@ -182,6 +184,8 @@ public:
 
   // module pin-to-pin RTL interface
 
+  sc_core::sc_out< bool > UART1_TX;
+  sc_core::sc_in< bool > UART1_RX;
   sc_core::sc_out< sc_dt::sc_bv<2> > USB0_PORT_INDCTL;
   sc_core::sc_out< bool > USB0_VBUS_PWRSELECT;
   sc_core::sc_in< bool > USB0_VBUS_PWRFAULT;
@@ -284,6 +288,8 @@ public:
 
   // module pin-to-pin RTL interface
 
+  sc_core::sc_out< bool > UART1_TX;
+  sc_core::sc_in< bool > UART1_RX;
   sc_core::sc_out< sc_dt::sc_bv<2> > USB0_PORT_INDCTL;
   sc_core::sc_out< bool > USB0_VBUS_PWRSELECT;
   sc_core::sc_in< bool > USB0_VBUS_PWRFAULT;
@@ -388,6 +394,8 @@ public:
 
   // module pin-to-pin RTL interface
 
+  sc_core::sc_out< bool > UART1_TX;
+  sc_core::sc_in< bool > UART1_RX;
   sc_core::sc_out< sc_dt::sc_bv<2> > USB0_PORT_INDCTL;
   sc_core::sc_out< bool > USB0_VBUS_PWRSELECT;
   sc_core::sc_in< bool > USB0_VBUS_PWRFAULT;
@@ -498,6 +506,8 @@ public:
 
   // module pin-to-pin RTL interface
 
+  sc_core::sc_out< bool > UART1_TX;
+  sc_core::sc_in< bool > UART1_RX;
   sc_core::sc_out< sc_dt::sc_bv<2> > USB0_PORT_INDCTL;
   sc_core::sc_out< bool > USB0_VBUS_PWRSELECT;
   sc_core::sc_in< bool > USB0_VBUS_PWRFAULT;
