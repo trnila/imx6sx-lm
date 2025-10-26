@@ -1,4 +1,5 @@
-FROM imx6sx-lm-base
+ARG FROM
+FROM ${FROM}
 
 RUN pacman-key --init && pacman-key --populate
 RUN pacman -Rns --noconfirm \
@@ -31,17 +32,19 @@ RUN cd /tmp \
     && make install \
     && rm -rf /tmp/can-utils/
 
-# install sllin.ko
-RUN --mount=type=bind,source=linux/include/config/,target=/mnt/config \
-    --mount=type=bind,source=linux-lin,target=/mnt/linux-lin \
-    KERNEL_RELEASE=$(< /mnt/config/kernel.release) \
-    && install -D /mnt/linux-lin/sllin/sllin.ko /usr/lib/modules/$(</mnt/config/kernel.release)/extra/sllin.ko \
-    && depmod -a ${KERNEL_RELEASE}
-
 RUN sed -i 's/#\s*en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen \
     && locale-gen
 RUN passwd -d root
 RUN userdel -r alarm
 RUN sed -Ei 's/\s*#\s*PermitRootLogin/PermitRootLogin/' /etc/ssh/sshd_config
 RUN sed -Ei 's/\s*#\s*PasswordAuthentication\s+(yes|no)/PasswordAuthentication no/' /etc/ssh/sshd_config
+
+# install sllin.ko
+ARG BOARD
+RUN --mount=type=bind,source=build/${BOARD}/linux/include/config/,target=/mnt/config \
+    --mount=type=bind,source=linux-lin,target=/mnt/linux-lin \
+    KERNEL_RELEASE=$(< /mnt/config/kernel.release) \
+    && install -D /mnt/linux-lin/sllin/sllin.ko /usr/lib/modules/$(</mnt/config/kernel.release)/extra/sllin.ko \
+    && depmod -a ${KERNEL_RELEASE}
+
 ADD files/ /

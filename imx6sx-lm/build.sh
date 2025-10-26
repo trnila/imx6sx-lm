@@ -1,7 +1,7 @@
 #!/bin/bash
-set -ex
+source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/../common.sh"
 
-./apply_patches.sh
+"$ROOT_DIR/apply_patches.sh"
 ./build_uboot.sh
 ./build_linux.sh
 ./build_sllin.sh

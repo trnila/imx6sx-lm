@@ -1,6 +1,5 @@
 #!/bin/bash
-set -ex
-source ./config.sh
+source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/../common.sh"
 
 RECOVERY_DIR="$BUILD_DIR"/recovery
 

@@ -1,5 +1,5 @@
 #!/bin/bash
-source ./config.sh
+source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/../common.sh"
 
 DEV=$1
 if [ -z "$DEV" ]; then
