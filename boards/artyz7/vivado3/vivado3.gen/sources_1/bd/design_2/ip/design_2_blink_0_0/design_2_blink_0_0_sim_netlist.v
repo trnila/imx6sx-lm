@@ -2,10 +2,10 @@
 // Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-// Date        : Sat Oct 25 20:49:11 2025
+// Date        : Sun Oct 26 21:49:40 2025
 // Host        : danieltrnka-Precision-7560 running 64-bit Ubuntu 22.04.5 LTS
 // Command     : write_verilog -force -mode funcsim
-//               /home/daniel-trnka/imx6sx-lm/arty/vivado3/vivado3.gen/sources_1/bd/design_2/ip/design_2_blink_0_0/design_2_blink_0_0_sim_netlist.v
+//               /home/daniel-trnka/archLINux_boards/boards/artyz7/vivado3/vivado3.gen/sources_1/bd/design_2/ip/design_2_blink_0_0/design_2_blink_0_0_sim_netlist.v
 // Design      : design_2_blink_0_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -38,34 +38,34 @@ module design_2_blink_0_0_blink
   input clk;
 
   wire clk;
+  wire counter0_carry__0_i_1_n_0;
+  wire counter0_carry__0_i_2_n_0;
+  wire counter0_carry__0_i_3_n_0;
+  wire counter0_carry__0_i_4_n_0;
+  wire counter0_carry__0_i_5_n_0;
+  wire counter0_carry__0_i_6_n_0;
   wire counter0_carry__0_n_0;
   wire counter0_carry__0_n_1;
   wire counter0_carry__0_n_2;
   wire counter0_carry__0_n_3;
+  wire counter0_carry__1_i_1_n_0;
+  wire counter0_carry__1_i_2_n_0;
+  wire counter0_carry__1_i_3_n_0;
+  wire counter0_carry__1_i_4_n_0;
+  wire counter0_carry__1_i_5_n_0;
+  wire counter0_carry__1_i_6_n_0;
   wire counter0_carry__1_n_0;
   wire counter0_carry__1_n_1;
   wire counter0_carry__1_n_2;
   wire counter0_carry__1_n_3;
+  wire counter0_carry__2_i_1_n_0;
+  wire counter0_carry__2_i_2_n_0;
   wire counter0_carry__2_n_3;
-  wire counter0_carry_i_1__0_n_0;
-  wire counter0_carry_i_1__1_n_0;
-  wire counter0_carry_i_1__2_n_0;
   wire counter0_carry_i_1_n_0;
-  wire counter0_carry_i_2__0_n_0;
-  wire counter0_carry_i_2__1_n_0;
-  wire counter0_carry_i_2__2_n_0;
   wire counter0_carry_i_2_n_0;
-  wire counter0_carry_i_3__0_n_0;
-  wire counter0_carry_i_3__1_n_0;
   wire counter0_carry_i_3_n_0;
-  wire counter0_carry_i_4__0_n_0;
-  wire counter0_carry_i_4__1_n_0;
   wire counter0_carry_i_4_n_0;
-  wire counter0_carry_i_5__0_n_0;
-  wire counter0_carry_i_5__1_n_0;
   wire counter0_carry_i_5_n_0;
-  wire counter0_carry_i_6__0_n_0;
-  wire counter0_carry_i_6__1_n_0;
   wire counter0_carry_i_6_n_0;
   wire counter0_carry_i_7_n_0;
   wire counter0_carry_i_8_n_0;
@@ -142,28 +142,112 @@ module design_2_blink_0_0_blink
         .CYINIT(1'b1),
         .DI({counter0_carry_i_1_n_0,counter0_carry_i_2_n_0,counter0_carry_i_3_n_0,counter0_carry_i_4_n_0}),
         .O(NLW_counter0_carry_O_UNCONNECTED[3:0]),
-        .S({counter0_carry_i_5__1_n_0,counter0_carry_i_6__1_n_0,counter0_carry_i_7_n_0,counter0_carry_i_8_n_0}));
+        .S({counter0_carry_i_5_n_0,counter0_carry_i_6_n_0,counter0_carry_i_7_n_0,counter0_carry_i_8_n_0}));
   CARRY4 counter0_carry__0
        (.CI(counter0_carry_n_0),
         .CO({counter0_carry__0_n_0,counter0_carry__0_n_1,counter0_carry__0_n_2,counter0_carry__0_n_3}),
         .CYINIT(1'b0),
-        .DI({1'b0,1'b0,counter0_carry_i_1__0_n_0,counter0_carry_i_2__0_n_0}),
+        .DI({1'b0,1'b0,counter0_carry__0_i_1_n_0,counter0_carry__0_i_2_n_0}),
         .O(NLW_counter0_carry__0_O_UNCONNECTED[3:0]),
-        .S({counter0_carry_i_3__0_n_0,counter0_carry_i_4__0_n_0,counter0_carry_i_5__0_n_0,counter0_carry_i_6__0_n_0}));
+        .S({counter0_carry__0_i_3_n_0,counter0_carry__0_i_4_n_0,counter0_carry__0_i_5_n_0,counter0_carry__0_i_6_n_0}));
+  LUT2 #(
+    .INIT(4'hE)) 
+    counter0_carry__0_i_1
+       (.I0(counter_reg[10]),
+        .I1(counter_reg[11]),
+        .O(counter0_carry__0_i_1_n_0));
+  LUT2 #(
+    .INIT(4'hE)) 
+    counter0_carry__0_i_2
+       (.I0(counter_reg[8]),
+        .I1(counter_reg[9]),
+        .O(counter0_carry__0_i_2_n_0));
+  LUT2 #(
+    .INIT(4'h8)) 
+    counter0_carry__0_i_3
+       (.I0(counter_reg[14]),
+        .I1(counter_reg[15]),
+        .O(counter0_carry__0_i_3_n_0));
+  LUT2 #(
+    .INIT(4'h8)) 
+    counter0_carry__0_i_4
+       (.I0(counter_reg[12]),
+        .I1(counter_reg[13]),
+        .O(counter0_carry__0_i_4_n_0));
+  LUT2 #(
+    .INIT(4'h1)) 
+    counter0_carry__0_i_5
+       (.I0(counter_reg[10]),
+        .I1(counter_reg[11]),
+        .O(counter0_carry__0_i_5_n_0));
+  LUT2 #(
+    .INIT(4'h1)) 
+    counter0_carry__0_i_6
+       (.I0(counter_reg[8]),
+        .I1(counter_reg[9]),
+        .O(counter0_carry__0_i_6_n_0));
   CARRY4 counter0_carry__1
        (.CI(counter0_carry__0_n_0),
         .CO({counter0_carry__1_n_0,counter0_carry__1_n_1,counter0_carry__1_n_2,counter0_carry__1_n_3}),
         .CYINIT(1'b0),
-        .DI({1'b0,1'b0,counter0_carry_i_1__1_n_0,counter0_carry_i_2__1_n_0}),
+        .DI({1'b0,1'b0,counter0_carry__1_i_1_n_0,counter0_carry__1_i_2_n_0}),
         .O(NLW_counter0_carry__1_O_UNCONNECTED[3:0]),
-        .S({counter0_carry_i_3__1_n_0,counter0_carry_i_4__1_n_0,counter0_carry_i_5_n_0,counter0_carry_i_6_n_0}));
+        .S({counter0_carry__1_i_3_n_0,counter0_carry__1_i_4_n_0,counter0_carry__1_i_5_n_0,counter0_carry__1_i_6_n_0}));
+  LUT2 #(
+    .INIT(4'h8)) 
+    counter0_carry__1_i_1
+       (.I0(counter_reg[18]),
+        .I1(counter_reg[19]),
+        .O(counter0_carry__1_i_1_n_0));
+  LUT2 #(
+    .INIT(4'h8)) 
+    counter0_carry__1_i_2
+       (.I0(counter_reg[16]),
+        .I1(counter_reg[17]),
+        .O(counter0_carry__1_i_2_n_0));
+  LUT2 #(
+    .INIT(4'h8)) 
+    counter0_carry__1_i_3
+       (.I0(counter_reg[22]),
+        .I1(counter_reg[23]),
+        .O(counter0_carry__1_i_3_n_0));
+  LUT2 #(
+    .INIT(4'h8)) 
+    counter0_carry__1_i_4
+       (.I0(counter_reg[20]),
+        .I1(counter_reg[21]),
+        .O(counter0_carry__1_i_4_n_0));
+  LUT2 #(
+    .INIT(4'h2)) 
+    counter0_carry__1_i_5
+       (.I0(counter_reg[19]),
+        .I1(counter_reg[18]),
+        .O(counter0_carry__1_i_5_n_0));
+  LUT2 #(
+    .INIT(4'h2)) 
+    counter0_carry__1_i_6
+       (.I0(counter_reg[17]),
+        .I1(counter_reg[16]),
+        .O(counter0_carry__1_i_6_n_0));
   CARRY4 counter0_carry__2
        (.CI(counter0_carry__1_n_0),
         .CO({NLW_counter0_carry__2_CO_UNCONNECTED[3:1],counter0_carry__2_n_3}),
         .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,counter0_carry_i_1__2_n_0}),
+        .DI({1'b0,1'b0,1'b0,counter0_carry__2_i_1_n_0}),
         .O(NLW_counter0_carry__2_O_UNCONNECTED[3:0]),
-        .S({1'b0,1'b0,1'b0,counter0_carry_i_2__2_n_0}));
+        .S({1'b0,1'b0,1'b0,counter0_carry__2_i_2_n_0}));
+  LUT2 #(
+    .INIT(4'h8)) 
+    counter0_carry__2_i_1
+       (.I0(counter_reg[24]),
+        .I1(counter_reg[25]),
+        .O(counter0_carry__2_i_1_n_0));
+  LUT2 #(
+    .INIT(4'h2)) 
+    counter0_carry__2_i_2
+       (.I0(counter_reg[25]),
+        .I1(counter_reg[24]),
+        .O(counter0_carry__2_i_2_n_0));
   LUT2 #(
     .INIT(4'h8)) 
     counter0_carry_i_1
@@ -172,46 +256,10 @@ module design_2_blink_0_0_blink
         .O(counter0_carry_i_1_n_0));
   LUT2 #(
     .INIT(4'hE)) 
-    counter0_carry_i_1__0
-       (.I0(counter_reg[10]),
-        .I1(counter_reg[11]),
-        .O(counter0_carry_i_1__0_n_0));
-  LUT2 #(
-    .INIT(4'h8)) 
-    counter0_carry_i_1__1
-       (.I0(counter_reg[18]),
-        .I1(counter_reg[19]),
-        .O(counter0_carry_i_1__1_n_0));
-  LUT2 #(
-    .INIT(4'h8)) 
-    counter0_carry_i_1__2
-       (.I0(counter_reg[24]),
-        .I1(counter_reg[25]),
-        .O(counter0_carry_i_1__2_n_0));
-  LUT2 #(
-    .INIT(4'hE)) 
     counter0_carry_i_2
        (.I0(counter_reg[4]),
         .I1(counter_reg[5]),
         .O(counter0_carry_i_2_n_0));
-  LUT2 #(
-    .INIT(4'hE)) 
-    counter0_carry_i_2__0
-       (.I0(counter_reg[8]),
-        .I1(counter_reg[9]),
-        .O(counter0_carry_i_2__0_n_0));
-  LUT2 #(
-    .INIT(4'h8)) 
-    counter0_carry_i_2__1
-       (.I0(counter_reg[16]),
-        .I1(counter_reg[17]),
-        .O(counter0_carry_i_2__1_n_0));
-  LUT2 #(
-    .INIT(4'h2)) 
-    counter0_carry_i_2__2
-       (.I0(counter_reg[25]),
-        .I1(counter_reg[24]),
-        .O(counter0_carry_i_2__2_n_0));
   LUT2 #(
     .INIT(4'hE)) 
     counter0_carry_i_3
@@ -219,71 +267,23 @@ module design_2_blink_0_0_blink
         .I1(counter_reg[3]),
         .O(counter0_carry_i_3_n_0));
   LUT2 #(
-    .INIT(4'h8)) 
-    counter0_carry_i_3__0
-       (.I0(counter_reg[14]),
-        .I1(counter_reg[15]),
-        .O(counter0_carry_i_3__0_n_0));
-  LUT2 #(
-    .INIT(4'h8)) 
-    counter0_carry_i_3__1
-       (.I0(counter_reg[22]),
-        .I1(counter_reg[23]),
-        .O(counter0_carry_i_3__1_n_0));
-  LUT2 #(
     .INIT(4'hE)) 
     counter0_carry_i_4
        (.I0(counter_reg[0]),
         .I1(counter_reg[1]),
         .O(counter0_carry_i_4_n_0));
   LUT2 #(
-    .INIT(4'h8)) 
-    counter0_carry_i_4__0
-       (.I0(counter_reg[12]),
-        .I1(counter_reg[13]),
-        .O(counter0_carry_i_4__0_n_0));
-  LUT2 #(
-    .INIT(4'h8)) 
-    counter0_carry_i_4__1
-       (.I0(counter_reg[20]),
-        .I1(counter_reg[21]),
-        .O(counter0_carry_i_4__1_n_0));
-  LUT2 #(
     .INIT(4'h2)) 
     counter0_carry_i_5
-       (.I0(counter_reg[19]),
-        .I1(counter_reg[18]),
+       (.I0(counter_reg[7]),
+        .I1(counter_reg[6]),
         .O(counter0_carry_i_5_n_0));
   LUT2 #(
     .INIT(4'h1)) 
-    counter0_carry_i_5__0
-       (.I0(counter_reg[10]),
-        .I1(counter_reg[11]),
-        .O(counter0_carry_i_5__0_n_0));
-  LUT2 #(
-    .INIT(4'h2)) 
-    counter0_carry_i_5__1
-       (.I0(counter_reg[7]),
-        .I1(counter_reg[6]),
-        .O(counter0_carry_i_5__1_n_0));
-  LUT2 #(
-    .INIT(4'h2)) 
     counter0_carry_i_6
-       (.I0(counter_reg[17]),
-        .I1(counter_reg[16]),
-        .O(counter0_carry_i_6_n_0));
-  LUT2 #(
-    .INIT(4'h1)) 
-    counter0_carry_i_6__0
-       (.I0(counter_reg[8]),
-        .I1(counter_reg[9]),
-        .O(counter0_carry_i_6__0_n_0));
-  LUT2 #(
-    .INIT(4'h1)) 
-    counter0_carry_i_6__1
        (.I0(counter_reg[4]),
         .I1(counter_reg[5]),
-        .O(counter0_carry_i_6__1_n_0));
+        .O(counter0_carry_i_6_n_0));
   LUT2 #(
     .INIT(4'h1)) 
     counter0_carry_i_7

@@ -1,14 +1,14 @@
-2025-10-26 17:49:12,261 - [DEBUG] Using xsct from : /tools/petalinux/components/xsct/bin/xsct
-2025-10-26 17:49:12,262 - [INFO] Getting Platform info from HW file
-2025-10-26 17:49:12,262 - [DEBUG] Using the soc_family specified by user:zynq
-2025-10-26 17:49:12,277 - [DEBUG] Hardware Configuration:
-2025-10-26 17:49:12,277 - [DEBUG] MACHINE     = "None"
-2025-10-26 17:49:12,277 - [DEBUG] DEVICE_ID   = "7z020"
-2025-10-26 17:49:12,277 - [DEBUG] SOC_FAMILY  = "zynq"
-2025-10-26 17:49:12,277 - [DEBUG] SOC_VARIANT = ""
-2025-10-26 17:49:12,277 - [INFO] Silentconfig project
-2025-10-26 17:49:12,277 - [DEBUG] Running CMD: yes "" | env KCONFIG_CONFIG=/home/daniel-trnka/archLINux_boards/boards/artyz7/artyz7_linux/project-spec/configs/config conf /home/daniel-trnka/archLINux_boards/boards/artyz7/artyz7_linux/project-spec/configs/configs/Kconfig
-2025-10-26 17:49:12,281 - [DEBUG] *
+2025-10-26 21:24:43,707 - [DEBUG] Using xsct from : /tools/petalinux/components/xsct/bin/xsct
+2025-10-26 21:24:43,707 - [INFO] Getting Platform info from HW file
+2025-10-26 21:24:43,707 - [DEBUG] Using the soc_family specified by user:zynq
+2025-10-26 21:24:43,723 - [DEBUG] Hardware Configuration:
+2025-10-26 21:24:43,723 - [DEBUG] MACHINE     = "None"
+2025-10-26 21:24:43,723 - [DEBUG] DEVICE_ID   = "7z020"
+2025-10-26 21:24:43,723 - [DEBUG] SOC_FAMILY  = "zynq"
+2025-10-26 21:24:43,723 - [DEBUG] SOC_VARIANT = ""
+2025-10-26 21:24:43,723 - [INFO] Silentconfig project
+2025-10-26 21:24:43,723 - [DEBUG] Running CMD: yes "" | env KCONFIG_CONFIG=/home/daniel-trnka/archLINux_boards/boards/artyz7/artyz7_linux/project-spec/configs/config conf /home/daniel-trnka/archLINux_boards/boards/artyz7/artyz7_linux/project-spec/configs/configs/Kconfig
+2025-10-26 21:24:43,727 - [DEBUG] *
 * PetaLinux System Configuration
 *
 ZYNQ Configuration (SYSTEM_ZYNQ) [Y/?] y
@@ -277,9 +277,9 @@ user layer 0 (USER_LAYER_0) []
 #
 # configuration written to /home/daniel-trnka/archLINux_boards/boards/artyz7/artyz7_linux/project-spec/configs/config
 #
-2025-10-26 17:49:12,314 - [INFO] Silentconfig rootfs
-2025-10-26 17:49:12,314 - [DEBUG] Running CMD: yes "" | env KCONFIG_CONFIG=/home/daniel-trnka/archLINux_boards/boards/artyz7/artyz7_linux/project-spec/configs/rootfs_config conf /home/daniel-trnka/archLINux_boards/boards/artyz7/artyz7_linux/project-spec/configs/rootfsconfigs/Kconfig
-2025-10-26 17:49:12,320 - [DEBUG] *
+2025-10-26 21:24:43,758 - [INFO] Silentconfig rootfs
+2025-10-26 21:24:43,758 - [DEBUG] Running CMD: yes "" | env KCONFIG_CONFIG=/home/daniel-trnka/archLINux_boards/boards/artyz7/artyz7_linux/project-spec/configs/rootfs_config conf /home/daniel-trnka/archLINux_boards/boards/artyz7/artyz7_linux/project-spec/configs/rootfsconfigs/Kconfig
+2025-10-26 21:24:43,765 - [DEBUG] *
 * Configuration
 *
 *
@@ -3559,7 +3559,7 @@ Add Users to Sudo users (ADD_USERS_TO_SUDOERS) [petalinux]
 #
 # configuration written to /home/daniel-trnka/archLINux_boards/boards/artyz7/artyz7_linux/project-spec/configs/rootfs_config
 #
-2025-10-26 17:49:12,325 - [INFO] Generating configuration files
-2025-10-26 17:49:12,326 - [DEBUG] No multilibs enabled.
-2025-10-26 17:49:12,326 - [DEBUG] No multilibs enabled.
-2025-10-26 17:49:12,336 - [DEBUG] Shutting down bitbake
+2025-10-26 21:24:43,770 - [INFO] Generating configuration files
+2025-10-26 21:24:43,770 - [DEBUG] No multilibs enabled.
+2025-10-26 21:24:43,770 - [DEBUG] No multilibs enabled.
+2025-10-26 21:24:43,781 - [DEBUG] Shutting down bitbake

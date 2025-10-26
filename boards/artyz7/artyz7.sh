@@ -17,7 +17,7 @@ build_linux_dtb() (
 )
 
 build_sllin() (
-    make -C "$ROOT_DIR/"linux O="$BUILD_DIR/linux" M="$ROOT_DIR/linux-lin/sllin/" modules
+    echo Not implemented
 )
 
 rootfs_partition() (
@@ -29,16 +29,19 @@ rootfs_partition() (
         echo -e "a\n1\n" # set bootable partition 1
         echo w # save table
     ) | sudo fdisk "$SDCARD" --noauto-pt --wipe-partitions always
-    sudo mkfs.vfat -F "$(partition "$SDCARD" 1)" -n BOOT
+    sudo mkfs.vfat "$(partition "$SDCARD" 1)" -n BOOT
     sudo mkfs.ext4 -F "$(partition "$SDCARD" 2)" -L rootfs
-
 )
 
-write_rootfs() (
+rootfs_mount() (
     sudo mount "$(partition "$SDCARD" 2)" "$MNT"
     sudo mkdir -p "$MNT/boot"
     sudo mount "$(partition "$SDCARD" 1)" "$MNT/boot"
+)
 
-    sudo cp -r artyz7_linux/images/linux/{BOOT.BIN,image.ub} "$MNT/boot"
-    sudo tar -C "$MNT" -xf artyz7_linux/images/linux/rootfs.tar.gz || true
+rootfs_write() (
+    #sudo cp -r artyz7_linux/images/linux/{BOOT.BIN,image.ub} "$MNT/boot"
+    # TODO: remove
+    sudo tar -C "$MNT" -xf artyz7_linux/images/linux/rootfs.tar.gz ./boot || true
+    sudo rsync -av "$ROOTFS_DIR/" "$MNT/"
 )

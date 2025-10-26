@@ -2,10 +2,10 @@
 -- Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
--- Date        : Sun Oct 26 11:42:55 2025
+-- Date        : Sun Oct 26 21:49:45 2025
 -- Host        : danieltrnka-Precision-7560 running 64-bit Ubuntu 22.04.5 LTS
 -- Command     : write_vhdl -force -mode funcsim
---               /home/daniel-trnka/imx6sx-lm/arty/vivado3/vivado3.gen/sources_1/bd/design_2/ip/design_2_axi_uart16550_0_0/design_2_axi_uart16550_0_0_sim_netlist.vhdl
+--               /home/daniel-trnka/archLINux_boards/boards/artyz7/vivado3/vivado3.gen/sources_1/bd/design_2/ip/design_2_axi_uart16550_0_0/design_2_axi_uart16550_0_0_sim_netlist.vhdl
 -- Design      : design_2_axi_uart16550_0_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.

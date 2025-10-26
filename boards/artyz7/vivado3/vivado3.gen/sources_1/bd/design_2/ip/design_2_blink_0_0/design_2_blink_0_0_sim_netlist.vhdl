@@ -2,10 +2,10 @@
 -- Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
--- Date        : Sat Oct 25 20:49:11 2025
+-- Date        : Sun Oct 26 21:49:40 2025
 -- Host        : danieltrnka-Precision-7560 running 64-bit Ubuntu 22.04.5 LTS
 -- Command     : write_vhdl -force -mode funcsim
---               /home/daniel-trnka/imx6sx-lm/arty/vivado3/vivado3.gen/sources_1/bd/design_2/ip/design_2_blink_0_0/design_2_blink_0_0_sim_netlist.vhdl
+--               /home/daniel-trnka/archLINux_boards/boards/artyz7/vivado3/vivado3.gen/sources_1/bd/design_2/ip/design_2_blink_0_0/design_2_blink_0_0_sim_netlist.vhdl
 -- Design      : design_2_blink_0_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -25,34 +25,34 @@ entity design_2_blink_0_0_blink is
 end design_2_blink_0_0_blink;
 
 architecture STRUCTURE of design_2_blink_0_0_blink is
+  signal \counter0_carry__0_i_1_n_0\ : STD_LOGIC;
+  signal \counter0_carry__0_i_2_n_0\ : STD_LOGIC;
+  signal \counter0_carry__0_i_3_n_0\ : STD_LOGIC;
+  signal \counter0_carry__0_i_4_n_0\ : STD_LOGIC;
+  signal \counter0_carry__0_i_5_n_0\ : STD_LOGIC;
+  signal \counter0_carry__0_i_6_n_0\ : STD_LOGIC;
   signal \counter0_carry__0_n_0\ : STD_LOGIC;
   signal \counter0_carry__0_n_1\ : STD_LOGIC;
   signal \counter0_carry__0_n_2\ : STD_LOGIC;
   signal \counter0_carry__0_n_3\ : STD_LOGIC;
+  signal \counter0_carry__1_i_1_n_0\ : STD_LOGIC;
+  signal \counter0_carry__1_i_2_n_0\ : STD_LOGIC;
+  signal \counter0_carry__1_i_3_n_0\ : STD_LOGIC;
+  signal \counter0_carry__1_i_4_n_0\ : STD_LOGIC;
+  signal \counter0_carry__1_i_5_n_0\ : STD_LOGIC;
+  signal \counter0_carry__1_i_6_n_0\ : STD_LOGIC;
   signal \counter0_carry__1_n_0\ : STD_LOGIC;
   signal \counter0_carry__1_n_1\ : STD_LOGIC;
   signal \counter0_carry__1_n_2\ : STD_LOGIC;
   signal \counter0_carry__1_n_3\ : STD_LOGIC;
+  signal \counter0_carry__2_i_1_n_0\ : STD_LOGIC;
+  signal \counter0_carry__2_i_2_n_0\ : STD_LOGIC;
   signal \counter0_carry__2_n_3\ : STD_LOGIC;
-  signal \counter0_carry_i_1__0_n_0\ : STD_LOGIC;
-  signal \counter0_carry_i_1__1_n_0\ : STD_LOGIC;
-  signal \counter0_carry_i_1__2_n_0\ : STD_LOGIC;
   signal counter0_carry_i_1_n_0 : STD_LOGIC;
-  signal \counter0_carry_i_2__0_n_0\ : STD_LOGIC;
-  signal \counter0_carry_i_2__1_n_0\ : STD_LOGIC;
-  signal \counter0_carry_i_2__2_n_0\ : STD_LOGIC;
   signal counter0_carry_i_2_n_0 : STD_LOGIC;
-  signal \counter0_carry_i_3__0_n_0\ : STD_LOGIC;
-  signal \counter0_carry_i_3__1_n_0\ : STD_LOGIC;
   signal counter0_carry_i_3_n_0 : STD_LOGIC;
-  signal \counter0_carry_i_4__0_n_0\ : STD_LOGIC;
-  signal \counter0_carry_i_4__1_n_0\ : STD_LOGIC;
   signal counter0_carry_i_4_n_0 : STD_LOGIC;
-  signal \counter0_carry_i_5__0_n_0\ : STD_LOGIC;
-  signal \counter0_carry_i_5__1_n_0\ : STD_LOGIC;
   signal counter0_carry_i_5_n_0 : STD_LOGIC;
-  signal \counter0_carry_i_6__0_n_0\ : STD_LOGIC;
-  signal \counter0_carry_i_6__1_n_0\ : STD_LOGIC;
   signal counter0_carry_i_6_n_0 : STD_LOGIC;
   signal counter0_carry_i_7_n_0 : STD_LOGIC;
   signal counter0_carry_i_8_n_0 : STD_LOGIC;
@@ -137,8 +137,8 @@ counter0_carry: unisim.vcomponents.CARRY4
       DI(1) => counter0_carry_i_3_n_0,
       DI(0) => counter0_carry_i_4_n_0,
       O(3 downto 0) => NLW_counter0_carry_O_UNCONNECTED(3 downto 0),
-      S(3) => \counter0_carry_i_5__1_n_0\,
-      S(2) => \counter0_carry_i_6__1_n_0\,
+      S(3) => counter0_carry_i_5_n_0,
+      S(2) => counter0_carry_i_6_n_0,
       S(1) => counter0_carry_i_7_n_0,
       S(0) => counter0_carry_i_8_n_0
     );
@@ -151,13 +151,67 @@ counter0_carry: unisim.vcomponents.CARRY4
       CO(0) => \counter0_carry__0_n_3\,
       CYINIT => '0',
       DI(3 downto 2) => B"00",
-      DI(1) => \counter0_carry_i_1__0_n_0\,
-      DI(0) => \counter0_carry_i_2__0_n_0\,
+      DI(1) => \counter0_carry__0_i_1_n_0\,
+      DI(0) => \counter0_carry__0_i_2_n_0\,
       O(3 downto 0) => \NLW_counter0_carry__0_O_UNCONNECTED\(3 downto 0),
-      S(3) => \counter0_carry_i_3__0_n_0\,
-      S(2) => \counter0_carry_i_4__0_n_0\,
-      S(1) => \counter0_carry_i_5__0_n_0\,
-      S(0) => \counter0_carry_i_6__0_n_0\
+      S(3) => \counter0_carry__0_i_3_n_0\,
+      S(2) => \counter0_carry__0_i_4_n_0\,
+      S(1) => \counter0_carry__0_i_5_n_0\,
+      S(0) => \counter0_carry__0_i_6_n_0\
+    );
+\counter0_carry__0_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"E"
+    )
+        port map (
+      I0 => counter_reg(10),
+      I1 => counter_reg(11),
+      O => \counter0_carry__0_i_1_n_0\
+    );
+\counter0_carry__0_i_2\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"E"
+    )
+        port map (
+      I0 => counter_reg(8),
+      I1 => counter_reg(9),
+      O => \counter0_carry__0_i_2_n_0\
+    );
+\counter0_carry__0_i_3\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"8"
+    )
+        port map (
+      I0 => counter_reg(14),
+      I1 => counter_reg(15),
+      O => \counter0_carry__0_i_3_n_0\
+    );
+\counter0_carry__0_i_4\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"8"
+    )
+        port map (
+      I0 => counter_reg(12),
+      I1 => counter_reg(13),
+      O => \counter0_carry__0_i_4_n_0\
+    );
+\counter0_carry__0_i_5\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => counter_reg(10),
+      I1 => counter_reg(11),
+      O => \counter0_carry__0_i_5_n_0\
+    );
+\counter0_carry__0_i_6\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => counter_reg(8),
+      I1 => counter_reg(9),
+      O => \counter0_carry__0_i_6_n_0\
     );
 \counter0_carry__1\: unisim.vcomponents.CARRY4
      port map (
@@ -168,13 +222,67 @@ counter0_carry: unisim.vcomponents.CARRY4
       CO(0) => \counter0_carry__1_n_3\,
       CYINIT => '0',
       DI(3 downto 2) => B"00",
-      DI(1) => \counter0_carry_i_1__1_n_0\,
-      DI(0) => \counter0_carry_i_2__1_n_0\,
+      DI(1) => \counter0_carry__1_i_1_n_0\,
+      DI(0) => \counter0_carry__1_i_2_n_0\,
       O(3 downto 0) => \NLW_counter0_carry__1_O_UNCONNECTED\(3 downto 0),
-      S(3) => \counter0_carry_i_3__1_n_0\,
-      S(2) => \counter0_carry_i_4__1_n_0\,
-      S(1) => counter0_carry_i_5_n_0,
-      S(0) => counter0_carry_i_6_n_0
+      S(3) => \counter0_carry__1_i_3_n_0\,
+      S(2) => \counter0_carry__1_i_4_n_0\,
+      S(1) => \counter0_carry__1_i_5_n_0\,
+      S(0) => \counter0_carry__1_i_6_n_0\
+    );
+\counter0_carry__1_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"8"
+    )
+        port map (
+      I0 => counter_reg(18),
+      I1 => counter_reg(19),
+      O => \counter0_carry__1_i_1_n_0\
+    );
+\counter0_carry__1_i_2\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"8"
+    )
+        port map (
+      I0 => counter_reg(16),
+      I1 => counter_reg(17),
+      O => \counter0_carry__1_i_2_n_0\
+    );
+\counter0_carry__1_i_3\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"8"
+    )
+        port map (
+      I0 => counter_reg(22),
+      I1 => counter_reg(23),
+      O => \counter0_carry__1_i_3_n_0\
+    );
+\counter0_carry__1_i_4\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"8"
+    )
+        port map (
+      I0 => counter_reg(20),
+      I1 => counter_reg(21),
+      O => \counter0_carry__1_i_4_n_0\
+    );
+\counter0_carry__1_i_5\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => counter_reg(19),
+      I1 => counter_reg(18),
+      O => \counter0_carry__1_i_5_n_0\
+    );
+\counter0_carry__1_i_6\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => counter_reg(17),
+      I1 => counter_reg(16),
+      O => \counter0_carry__1_i_6_n_0\
     );
 \counter0_carry__2\: unisim.vcomponents.CARRY4
      port map (
@@ -183,10 +291,28 @@ counter0_carry: unisim.vcomponents.CARRY4
       CO(0) => \counter0_carry__2_n_3\,
       CYINIT => '0',
       DI(3 downto 1) => B"000",
-      DI(0) => \counter0_carry_i_1__2_n_0\,
+      DI(0) => \counter0_carry__2_i_1_n_0\,
       O(3 downto 0) => \NLW_counter0_carry__2_O_UNCONNECTED\(3 downto 0),
       S(3 downto 1) => B"000",
-      S(0) => \counter0_carry_i_2__2_n_0\
+      S(0) => \counter0_carry__2_i_2_n_0\
+    );
+\counter0_carry__2_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"8"
+    )
+        port map (
+      I0 => counter_reg(24),
+      I1 => counter_reg(25),
+      O => \counter0_carry__2_i_1_n_0\
+    );
+\counter0_carry__2_i_2\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => counter_reg(25),
+      I1 => counter_reg(24),
+      O => \counter0_carry__2_i_2_n_0\
     );
 counter0_carry_i_1: unisim.vcomponents.LUT2
     generic map(
@@ -197,33 +323,6 @@ counter0_carry_i_1: unisim.vcomponents.LUT2
       I1 => counter_reg(7),
       O => counter0_carry_i_1_n_0
     );
-\counter0_carry_i_1__0\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"E"
-    )
-        port map (
-      I0 => counter_reg(10),
-      I1 => counter_reg(11),
-      O => \counter0_carry_i_1__0_n_0\
-    );
-\counter0_carry_i_1__1\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"8"
-    )
-        port map (
-      I0 => counter_reg(18),
-      I1 => counter_reg(19),
-      O => \counter0_carry_i_1__1_n_0\
-    );
-\counter0_carry_i_1__2\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"8"
-    )
-        port map (
-      I0 => counter_reg(24),
-      I1 => counter_reg(25),
-      O => \counter0_carry_i_1__2_n_0\
-    );
 counter0_carry_i_2: unisim.vcomponents.LUT2
     generic map(
       INIT => X"E"
@@ -232,33 +331,6 @@ counter0_carry_i_2: unisim.vcomponents.LUT2
       I0 => counter_reg(4),
       I1 => counter_reg(5),
       O => counter0_carry_i_2_n_0
-    );
-\counter0_carry_i_2__0\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"E"
-    )
-        port map (
-      I0 => counter_reg(8),
-      I1 => counter_reg(9),
-      O => \counter0_carry_i_2__0_n_0\
-    );
-\counter0_carry_i_2__1\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"8"
-    )
-        port map (
-      I0 => counter_reg(16),
-      I1 => counter_reg(17),
-      O => \counter0_carry_i_2__1_n_0\
-    );
-\counter0_carry_i_2__2\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => counter_reg(25),
-      I1 => counter_reg(24),
-      O => \counter0_carry_i_2__2_n_0\
     );
 counter0_carry_i_3: unisim.vcomponents.LUT2
     generic map(
@@ -269,24 +341,6 @@ counter0_carry_i_3: unisim.vcomponents.LUT2
       I1 => counter_reg(3),
       O => counter0_carry_i_3_n_0
     );
-\counter0_carry_i_3__0\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"8"
-    )
-        port map (
-      I0 => counter_reg(14),
-      I1 => counter_reg(15),
-      O => \counter0_carry_i_3__0_n_0\
-    );
-\counter0_carry_i_3__1\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"8"
-    )
-        port map (
-      I0 => counter_reg(22),
-      I1 => counter_reg(23),
-      O => \counter0_carry_i_3__1_n_0\
-    );
 counter0_carry_i_4: unisim.vcomponents.LUT2
     generic map(
       INIT => X"E"
@@ -296,77 +350,23 @@ counter0_carry_i_4: unisim.vcomponents.LUT2
       I1 => counter_reg(1),
       O => counter0_carry_i_4_n_0
     );
-\counter0_carry_i_4__0\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"8"
-    )
-        port map (
-      I0 => counter_reg(12),
-      I1 => counter_reg(13),
-      O => \counter0_carry_i_4__0_n_0\
-    );
-\counter0_carry_i_4__1\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"8"
-    )
-        port map (
-      I0 => counter_reg(20),
-      I1 => counter_reg(21),
-      O => \counter0_carry_i_4__1_n_0\
-    );
 counter0_carry_i_5: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => counter_reg(19),
-      I1 => counter_reg(18),
-      O => counter0_carry_i_5_n_0
-    );
-\counter0_carry_i_5__0\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => counter_reg(10),
-      I1 => counter_reg(11),
-      O => \counter0_carry_i_5__0_n_0\
-    );
-\counter0_carry_i_5__1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"2"
     )
         port map (
       I0 => counter_reg(7),
       I1 => counter_reg(6),
-      O => \counter0_carry_i_5__1_n_0\
+      O => counter0_carry_i_5_n_0
     );
 counter0_carry_i_6: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => counter_reg(17),
-      I1 => counter_reg(16),
-      O => counter0_carry_i_6_n_0
-    );
-\counter0_carry_i_6__0\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => counter_reg(8),
-      I1 => counter_reg(9),
-      O => \counter0_carry_i_6__0_n_0\
-    );
-\counter0_carry_i_6__1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"1"
     )
         port map (
       I0 => counter_reg(4),
       I1 => counter_reg(5),
-      O => \counter0_carry_i_6__1_n_0\
+      O => counter0_carry_i_6_n_0
     );
 counter0_carry_i_7: unisim.vcomponents.LUT2
     generic map(
