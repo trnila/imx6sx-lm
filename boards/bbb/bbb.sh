@@ -40,12 +40,13 @@ rootfs_partition() (
 rootfs_mount() (
     sudo mount "$(partition "$SDCARD" 2)" "$MNT"
     sudo mkdir -p "/$MNT/boot"
-    sudo mount "$(partition "$SDCARD" 2)" "$MNT/boot"
+    sudo mount "$(partition "$SDCARD" 1)" "$MNT/boot"
 )
 
 rootfs_write() (
     sudo cp "$BUILD_DIR/u-boot/MLO" "$MNT/boot"
     sudo cp "$BUILD_DIR/u-boot/u-boot.img" "$MNT/boot"
+    sudo cp "$BUILD_DIR/bbb.itb" "$MNT/boot"
 
     sudo rsync -avzP "$ROOTFS_DIR/" "$MNT"
     sudo make -C "$ROOT_DIR/linux" O="$BUILD_DIR/linux" modules_install INSTALL_MOD_PATH="$MNT"

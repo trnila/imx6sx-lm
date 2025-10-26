@@ -11,8 +11,8 @@
 			arch = "arm";
 			os = "linux";
 			compression = "none";
-			load = < 0x80008000 >;
-			entry = < 0x80008000 >;
+			load = <0x80008000>;
+			entry = <0x80008000>;
 		};
 
 		fdt {
@@ -23,7 +23,7 @@
 			compression = "none";
 		};
 
-		myfdt {
+		bbb {
             data = /incbin/("../../out/bbb/bbb.dtbo");
             type = "flat_dt";
             arch = "arm";
@@ -36,8 +36,7 @@
 
 		conf {
 			kernel = "kernel";
-			fdt = "fdt", "myfdt";
-			/*cmdline = "console=ttyS0,115200 root=/dev/mmcblk0p2 rw rootwait";*/
+			fdt = "fdt", "bbb";
 		};
 	};
 };
