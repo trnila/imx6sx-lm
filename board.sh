@@ -75,10 +75,10 @@ fi
 
 if [ "$action" = "build" ]; then
     BOARD="$1"
-    shift
+    shift || true
     if [[ -z "$BOARD" || "$BOARD" = "all" ]]; then
         for board in boards/*; do
-            echo "${board#boards/}"
+            "$0" build "$(basename "$board")" "$@"
         done
     else
         build "$BOARD" "$@"
