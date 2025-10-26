@@ -18,28 +18,30 @@ build_sllin() (
     make -C "$ROOT_DIR/"linux O="$BUILD_DIR/linux" M="$ROOT_DIR/linux-lin/sllin/" modules
 )
 
-write_rootfs() (
-    DEVICE="/dev/mmcblk0"
-    sudo sgdisk -o "$DEVICE"
+rootfs_partition() (
+    sudo sgdisk -g -o "$SDCARD"
     sudo sgdisk --resize-table=128 -a 1 \
     -n 1:34:545 -c 1:fsbl1 \
     -n 2:546:1057 -c 2:fsbl2 \
     -n 3:1058:5153 -c 3:ssbl \
     -n 4:5154: -c 4:rootfs -A 4:set:2 \
-    -p "$DEVICE"
+    -p "$SDCARD"
 
-    sudo dd if=./u-boot/u-boot-spl.stm32 of="$DEVICE"p1
-    sudo dd if=./u-boot/u-boot-spl.stm32 of="$DEVICE"p2
-    sudo dd if=./u-boot/u-boot.img of="$DEVICE"p3
+    sudo mkfs.ext4 "$(partition "$SDCARD" 4)"
+)
 
-    sudo mkfs.ext4 "$DEVICE"p4
-    sudo mount "$DEVICE"p4 /mnt
-    sudo mkdir /mnt/boot
-    sudo cp linux/arch/arm/boot/zImage /mnt/boot
-    sudo cp linux/arch/arm/boot/dts/st/stm32mp157c-dk2.dtb /mnt/boot/a.dtb
-    sudo cp uart7.dtbo /mnt/boot/uart7.dtbo
+rootfs_mount() (
+    sudo mount "$(partition "$SDCARD" 4)" "$MNT"
+)
 
-    sudo rsync -avzP ./build/rootfs/* /mnt/
+rootfs_write() (
+    sudo dd if="$BUILD_DIR/u-boot/u-boot-spl.stm32" of="$(partition "$SDCARD" 1)"
+    sudo dd if="$BUILD_DIR/u-boot/u-boot-spl.stm32" of="$(partition "$SDCARD" 2)"
+    sudo dd if="$BUILD_DIR/u-boot/u-boot.img" of="$(partition "$SDCARD" 3)"
 
-    sudo umount /mnt
+    sudo mkdir "$MNT/boot"
+    sudo cp "$BUILD_DIR/linux/arch/arm/boot/zImage" "$MNT/boot"
+    sudo cp "$BUILD_DIR/linux/arch/arm/boot/dts/st/stm32mp157c-dk2.dtb" "$MNT/boot/a.dtb"
+    sudo cp "$BUILD_DIR/uart7.dtbo" "$MNT/boot/uart7.dtbo"
+    sudo rsync -avzP "$ROOTFS_DIR/" "$MNT/"
 )
