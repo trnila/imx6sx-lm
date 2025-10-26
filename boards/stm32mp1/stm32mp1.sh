@@ -14,10 +14,6 @@ build_linux_dtb() (
     dtc -I dts -O dtb -o "$BUILD_DIR/uart7.dtbo" uart7.dts
 )
 
-build_fit() (
-    mkimage -f bbb.its "$BUILD_DIR/bbb.itb"
-)
-
 build_sllin() (
     make -C "$ROOT_DIR/"linux O="$BUILD_DIR/linux" M="$ROOT_DIR/linux-lin/sllin/" modules
 )
