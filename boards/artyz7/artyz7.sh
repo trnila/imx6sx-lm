@@ -6,7 +6,7 @@ build_uboot() (
 
 build_linux() (
     source /tools/petalinux/settings.sh
-    cd artyz7_linux
+    cd artyz7_linux || exit 1
     petalinux-config --get-hw-description ../vivado3/design_2_wrapper.xsa --silentconfig
     petalinux-build
     petalinux-package --boot --u-boot --fpga --force
@@ -29,8 +29,8 @@ rootfs_partition() (
         echo -e "a\n1\n" # set bootable partition 1
         echo w # save table
     ) | sudo fdisk "$SDCARD" --noauto-pt --wipe-partitions always
-    sudo mkfs.vfat "$(partition "$SDCARD" 1)" -n BOOT
-    sudo mkfs.ext4 "$(partition "$SDCARD" 2)" -L rootfs
+    sudo mkfs.vfat -F "$(partition "$SDCARD" 1)" -n BOOT
+    sudo mkfs.ext4 -F "$(partition "$SDCARD" 2)" -L rootfs
 
 )
 
