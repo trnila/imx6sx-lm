@@ -70,13 +70,13 @@ source "$BOARD.sh"
 if [ "$action" = "build" ]; then
     if [ "$#" -eq 0 ]; then
         apply_patches
-        build_rootfs
         build_uboot
         build_linux
         build_linux_dtb
         declare -F build_fit && build_fit
         build_sllin
         declare -F build_recovery && build_recovery
+        build_rootfs
     else
         for cmd in "$@"; do
             "$cmd"
