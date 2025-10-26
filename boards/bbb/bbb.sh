@@ -24,8 +24,7 @@ build_sllin() (
     make -C "$ROOT_DIR/"linux O="$BUILD_DIR/linux" M="$ROOT_DIR/linux-lin/sllin/" modules
 )
 
-write_rootfs() (
-    DEVICE=/dev/mmcblk0
+rootfs_partition() (
     (
         echo o # create dos partion table
         echo -e "n\np\n1\n\n+500M" # add primary partion 1
@@ -33,19 +32,21 @@ write_rootfs() (
         echo -e "n\np\n2\n\n\n" # add primary partion 2 with rest of space
         echo -e "a\n1\n" # set bootable partition 1
         echo w # save table
-    ) | sudo fdisk "$DEVICE" --noauto-pt --wipe-partitions always
-    sudo mkfs.vfat ${DEVICE}p1 -n BOOT
-    sudo mkfs.ext4 ${DEVICE}p2 -L rootfs
+    ) | sudo fdisk "$SDCARD" --noauto-pt --wipe-partitions always
+    sudo mkfs.vfat "$(partition "$SDCARD" 1)" -n BOOT
+    sudo mkfs.ext4 "$(partition "$SDCARD" 2)" -L rootfs
+)
 
-    sudo mount ${DEVICE}p2 /mnt
-    sudo mkdir /mnt/boot
-    sudo mount ${DEVICE}p1 /mnt/boot
+rootfs_mount() (
+    sudo mount "$(partition "$SDCARD" 2)" "$MNT"
+    sudo mkdir -p "/$MNT/boot"
+    sudo mount "$(partition "$SDCARD" 2)" "$MNT/boot"
+)
 
-    sudo cp ./u-boot/MLO /mnt/boot
-    sudo cp ./u-boot/u-boot.img /mnt/boot/
+rootfs_write() (
+    sudo cp "$BUILD_DIR/u-boot/MLO" "$MNT/boot"
+    sudo cp "$BUILD_DIR/u-boot/u-boot.img" "$MNT/boot"
 
-    sudo rsync -avzP ../stm/build/rootfs/* /mnt/
-    sudo make -C linux modules_install INSTALL_MOD_PATH=/mnt/
-    sync
-    sudo umount /mnt/boot /mnt
+    sudo rsync -avzP "$ROOTFS_DIR/" "$MNT"
+    sudo make -C "$ROOT_DIR/linux" O="$BUILD_DIR/linux" modules_install INSTALL_MOD_PATH="$MNT"
 )
