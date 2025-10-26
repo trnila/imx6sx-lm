@@ -13,6 +13,19 @@ export CROSS_COMPILE=arm-linux-gnueabihf-
 export BUILD_DIR="$ROOT_DIR/build/$BOARD"
 export ROOTFS_DIR="$BUILD_DIR/rootfs"
 
+apply_patches() (
+    cd "$ROOT_DIR"
+    git submodule update --init
+    for repo in u-boot linux; do (
+        cd "$repo"
+        git am ../patches/"$repo"/*.patch
+    )
+    done
+
+    cd linux
+    git am ../linux-lin/sllin/linux-patches/*.patch
+)
+
 build_rootfs() {
     ROOTFS_URL=http://os.archlinuxarm.org/os/ArchLinuxARM-armv7-latest.tar.gz
     IMAGE_NAME="archlinux-boards-$BOARD"
@@ -35,3 +48,20 @@ build_rootfs() {
 }
 
 cd "$BOARD_DIR"
+
+run() {
+    if [ "$#" -eq 0 ]; then
+        apply_patches
+        build_uboot
+        build_linux
+        build_linux_dtb
+        build_sllin
+        build_recovery
+        build_rootfs
+    else
+        for cmd in "$@"; do
+            "$cmd"
+        done
+    fi
+    echo OK
+}
