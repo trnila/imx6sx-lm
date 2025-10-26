@@ -2,6 +2,8 @@
 
 build_uboot() (
     make -C "$ROOT_DIR/u-boot" O="$BUILD_DIR/u-boot" stm32mp15_basic_defconfig
+    # shellcheck disable=SC2016
+    (cd "$BUILD_DIR/u-boot" && "$ROOT_DIR/u-boot/scripts/config" --set-val CONFIG_BOOTCOMMAND '"ext4load mmc 0:4 0xc4400000 /boot/stm32mp1.itb; bootm 0xc4400000"')
     DEVICE_TREE=st/stm32mp157c-dk2 make -C "$ROOT_DIR/u-boot" O="$BUILD_DIR/u-boot" -j"$(nproc)" all
 )
 
@@ -11,7 +13,11 @@ build_linux() (
 )
 
 build_linux_dtb() (
-    dtc -I dts -O dtb -o "$BUILD_DIR/uart7.dtbo" uart7.dts
+    dtc -I dts -O dtb -o "$BUILD_DIR/overlay.dtbo" overlay.dts
+)
+
+build_fit() (
+    mkimage -f stm32mp1.its "$BUILD_DIR/stm32mp1.itb"
 )
 
 build_sllin() (
@@ -27,7 +33,7 @@ rootfs_partition() (
     -n 4:5154: -c 4:rootfs -A 4:set:2 \
     -p "$SDCARD"
 
-    sudo mkfs.ext4 "$(partition "$SDCARD" 4)"
+    sudo mkfs.ext4 -F "$(partition "$SDCARD" 4)"
 )
 
 rootfs_mount() (
@@ -40,8 +46,6 @@ rootfs_write() (
     sudo dd if="$BUILD_DIR/u-boot/u-boot.img" of="$(partition "$SDCARD" 3)"
 
     sudo mkdir "$MNT/boot"
-    sudo cp "$BUILD_DIR/linux/arch/arm/boot/zImage" "$MNT/boot"
-    sudo cp "$BUILD_DIR/linux/arch/arm/boot/dts/st/stm32mp157c-dk2.dtb" "$MNT/boot/a.dtb"
-    sudo cp "$BUILD_DIR/uart7.dtbo" "$MNT/boot/uart7.dtbo"
+    sudo cp "$BUILD_DIR/stm32mp1.itb" "$MNT/boot"
     sudo rsync -avzP "$ROOTFS_DIR/" "$MNT/"
 )

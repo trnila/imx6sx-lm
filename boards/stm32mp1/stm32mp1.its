@@ -1,0 +1,43 @@
+/dts-v1/;
+
+/ {
+	description = "STM32MP1 FIT Image";
+
+	images {
+		kernel {
+			description = "Linux Kernel";
+			data = /incbin/("../../out/stm32mp1/linux/arch/arm/boot/zImage");
+			type = "kernel";
+			arch = "arm";
+			os = "linux";
+			compression = "none";
+			load = <0xc2000000>;
+			entry = <0xc2000000>;
+		};
+
+		fdt {
+			description = "Device Tree";
+			data = /incbin/("../../out/stm32mp1/linux/arch/arm/boot/dts/st/stm32mp157c-dk2.dtb");
+			type = "flat_dt";
+			arch = "arm";
+			compression = "none";
+			load = <0xc4000000>;
+		};
+
+		overlay {
+            data = /incbin/("../../out/stm32mp1/overlay.dtbo");
+            type = "flat_dt";
+            arch = "arm";
+            load = <0xc4300000>;
+        };
+	};
+
+	configurations {
+		default = "conf";
+
+		conf {
+			kernel = "kernel";
+			fdt = "fdt", "overlay";
+		};
+	};
+};
