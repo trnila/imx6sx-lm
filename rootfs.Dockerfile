@@ -21,7 +21,8 @@ RUN --mount=target=/var/cache/pacman/pkg,type=cache,rw=true pacman -S --noconfir
     python \
     wget \
     cmake \
-    ninja
+    ninja \
+    minicom
 
 RUN cd /tmp \
     && git clone https://github.com/linux-can/can-utils.git \
