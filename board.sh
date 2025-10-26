@@ -36,7 +36,11 @@ build_rootfs() {
 }
 
 partition() {
-    echo "${1}p${2}"
+    if [ "$1" == /dev/mmcblk ]; then
+        echo "${1}p${2}"
+    else
+        echo "${1}${2}"
+    fi
 }
 
 action="$1"
