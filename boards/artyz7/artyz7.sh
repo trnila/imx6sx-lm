@@ -40,7 +40,7 @@ rootfs_mount() (
 )
 
 rootfs_write() (
-    #sudo cp -r artyz7_linux/images/linux/{BOOT.BIN,image.ub} "$MNT/boot"
+    sudo cp -r artyz7_linux/images/linux/{BOOT.BIN,image.ub} "$MNT/boot"
     # TODO: remove
     sudo tar -C "$MNT" -xf artyz7_linux/images/linux/rootfs.tar.gz ./boot || true
     sudo rsync -av "$ROOTFS_DIR/" "$MNT/"
